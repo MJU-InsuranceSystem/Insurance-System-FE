@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6", // 기존 설정 유지
-    "module": "commonjs", // 기존 설정 유지
+    "module": "esnext", // 기존 설정 유지
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
