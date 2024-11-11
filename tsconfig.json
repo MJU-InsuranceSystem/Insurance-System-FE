@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es6", // 기존 설정 유지
-    "module": "esnext", // 기존 설정 유지
+    "target": "es6",
+    "module": "esnext",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "jsx": "react-jsx",
-    "moduleResolution": "node" // 추가된 설정
+    "moduleResolution": "node"
   },
-  "include": ["src/**/*", "vite-env.d.ts"], // 새 파일 포함
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "vite-env.d.ts"], // 컴파일할 파일 포함
+  "exclude": ["node_modules"] // 컴파일에서 제외할 파일
 }
