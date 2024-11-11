@@ -66,25 +66,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "javascript.nodejs.core.library.configured.version": "20.17.0",
-    "javascript.nodejs.core.library.typings.version": "20.17.6",
-    "last_opened_file_path": "/Users/kimjiyoon/WebstormProjects/Insurance-System-FE",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "/Users/kimjiyoon/WebstormProjects/Insurance-System-FE/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.17.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.17.6&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kimjiyoon/WebstormProjects/Insurance-System-FE&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/kimjiyoon/WebstormProjects/Insurance-System-FE/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -124,7 +124,7 @@
       <workItem from="1730963591254" duration="2000" />
       <workItem from="1730963626286" duration="3365000" />
       <workItem from="1731079150146" duration="17361000" />
-      <workItem from="1731225689631" duration="8934000" />
+      <workItem from="1731225689631" duration="9116000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;feat: Implement signup, home, and login pages&quot;">
       <option name="closed" value="true" />
