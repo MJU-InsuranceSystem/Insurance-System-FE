@@ -6,64 +6,50 @@ export const SignUpWrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding: 40px 20px;
-    background-color: #ffffff;
+    background-color: #f9f9f9; /* 약간 밝은 배경색으로 변경 */
     min-height: 100vh;
+    max-width: 800px; /* 고정된 너비 */
+    margin: 0 auto; /* 중앙 정렬 */
+    box-sizing: border-box;
 `;
 
 export const Title = styled.h2`
     text-align: center;
-    font-size: 24px;
-    color: black;
-    margin-bottom: 30px;
+    font-size: 26px; /* 더 큰 폰트 크기 */
+    color: #333333;
+    margin-bottom: 20px;
     & span {
-        color: #1058A3;
+        color: #0b79d0; /* 강조된 텍스트 색상 변경 */
         font-weight: bold;
     }
 `;
 
 export const Input = styled.input`
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-bottom: 1px solid #767676;
-    background-color: transparent;
-    color: #767676;
+    max-width: 700px;
+    padding: 12px; /* 더 두꺼운 패딩 */
+    margin-bottom: 20px;
+    border: 1px solid #d1d1d1; /* 경계색 추가 */
+    border-radius: 4px; /* 경계 반경 추가 */
+    background-color: #ffffff; /* 흰색 배경 */
+    color: #333333;
     outline: none;
     &::placeholder {
-        color: #767676;
+        color: #a3a3a3;
     }
-`;
-
-export const RadioGroup = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    width: 100%;
-`;
-
-export const RadioButton = styled.button<{ active: boolean }>`
-    flex: 1;
-    padding: 10px;
-    background-color: ${(props) => (props.active ? '#1058A3' : '#333333')};
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    &:not(:last-child) {
-        margin-right: 5px;
+    &:focus {
+        border-color: #0b79d0; /* 포커스 시 경계색 */
     }
 `;
 
 export const Select = styled.select`
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #767676;
-    background-color: white;
-    color: #767676;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333333;
     outline: none;
     font-size: 14px;
 `;
@@ -71,7 +57,7 @@ export const Select = styled.select`
 export const Button = styled.button`
     width: 100%;
     padding: 15px;
-    background-color: #1058A3;
+    background-color: #0b79d0; /* 파란색 버튼 */
     color: white;
     border: none;
     cursor: pointer;
@@ -79,36 +65,29 @@ export const Button = styled.button`
     border-radius: 5px;
     transition: background-color 0.3s;
     &:hover {
-        background-color: #08457E;
+        background-color: #095a9e;
     }
-`;
-
-export const ConsentText = styled.div`
-    margin-top: 10px;
-    font-size: 12px;
-    color: #767676;
-    line-height: 1.5;
 `;
 
 export const CheckboxWrapper = styled.div`
     display: flex;
     align-items: center;
     margin-top: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 `;
 
 export const Checkbox = styled.input`
-    margin-right: 10px;
+    margin-right: 8px;
 `;
 
 export const CheckboxLabel = styled.label`
     font-size: 14px;
-    color: #767676;
+    color: #333333;
 `;
 
-// 에러 메시지 스타일
 export const ErrorMessage = styled.div`
     color: red;
-    font-size: 0.8rem;
+    font-size: 12px;
     margin-top: 5px;
+    text-align: left; /* 에러 메시지 왼쪽 정렬 */
 `;
