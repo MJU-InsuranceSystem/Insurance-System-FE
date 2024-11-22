@@ -5,32 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7edc1980-f65e-47fe-9e95-e60c78af3c9f" name="변경" comment="&quot;feat: Implement signup, home, and login pages&quot;">
-      <change afterPath="$PROJECT_DIR$/src/api/InsuranceDetailApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/createContractApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/createProductApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/getInsuranceListApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateProduct.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/GetInsuranceList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/InsuranceDetail.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/styles/CreateContractStyles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/styles/CreateProductStyles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/styles/InsuranceDetailStyles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/styles/InsuranceListStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/approveApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/planningApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/viewAllApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/Approve.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/Planning.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ViewAll.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/CompensationTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/ContractManagementTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/CustomerManagementTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/EmployeeManagementTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/MarketingTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/PayrollTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/PlanningTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/RecruitmentTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/SalesEducationTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/SalesManagementTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/Teams/UWTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/AdminHomeStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/ApproveStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/InsurancePlanStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/PlanningStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/PlanningTeamStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/ViewAllStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getAccessToken.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/approveApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/approveApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/axiosInstance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axiosInstance.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/loginApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/loginApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/registerApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/registerApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/viewAllApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/viewAllApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/Approve.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/Planning.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/Planning.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/ViewAll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ViewAll.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/Teams/PlanningTeam.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Teams/PlanningTeam.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/Router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/styles/ViewAllStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/ViewAllStyles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/getAccessToken.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/getAccessToken.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/styles/LoginStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/LoginStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/styles/RegisterStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/RegisterStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,11 +127,11 @@
       <recent name="$PROJECT_DIR$/src/types" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/page/SuvMenus" />
-      <recent name="$PROJECT_DIR$/src/components/page" />
       <recent name="$PROJECT_DIR$/src/components/page/Teams" />
+      <recent name="$PROJECT_DIR$/src/components/page" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -155,8 +163,7 @@
       <workItem from="1731225689631" duration="15149000" />
       <workItem from="1731627511653" duration="157000" />
       <workItem from="1731898451381" duration="9183000" />
-      <workItem from="1731977023612" duration="42322000" />
-      <workItem from="1732277763652" duration="14926000" />
+      <workItem from="1731977023612" duration="30898000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;feat: Implement signup, home, and login pages&quot;">
       <option name="closed" value="true" />
@@ -226,3 +233,4 @@
     <option name="LAST_COMMIT_MESSAGE" value="&quot;feat: Implement signup, home, and login pages&quot;" />
   </component>
 </project>
+

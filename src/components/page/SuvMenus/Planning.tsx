@@ -80,8 +80,13 @@ const Planning: React.FC = () => {
             const response = await createPlan(planData);
             console.log('API 응답 성공:', response);
 
-            alert('제출에 성공했습니다!');
-            navigate('/adminHome');
+            // 로컬 저장소에 새 기획 추가
+            const updatedPlans = JSON.parse(localStorage.getItem('plans') || '[]');
+            updatedPlans.push(response);
+            localStorage.setItem('plans', JSON.stringify(updatedPlans));
+
+            alert('기획이 성공적으로 생성되었습니다!');
+            navigate('/adminHome'); // 목록 페이지로 이동
         } catch (error) {
             console.error('API 요청 실패:', error);
             setError(error instanceof Error ? error.message : '제출에 실패했습니다.');

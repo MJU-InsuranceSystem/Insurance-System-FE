@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate 추가
 import Header from '../Header';
 import {
     Container,
@@ -13,6 +14,8 @@ import {
 } from '../styles/HomeStyles';
 
 const Home: React.FC = () => {
+    const navigate = useNavigate(); // useNavigate 초기화
+
     return (
         <>
             <Header />
@@ -26,7 +29,9 @@ const Home: React.FC = () => {
                     <MenuTitle>Quick Menu</MenuTitle>
                     <SubMenuTitle>자주찾는 메뉴</SubMenuTitle>
                     <MenuItems>
-                        <MenuItem>보험 가입 신청하기</MenuItem>
+                        <MenuItem onClick={() => navigate('/insuranceList')}>
+                            보험 가입 신청하기
+                        </MenuItem>
                         <MenuItem>보험금을 청구하기</MenuItem>
                         <MenuItem>보험료 납부하기</MenuItem>
                         <MenuItem>가입 보험 조회하기</MenuItem>

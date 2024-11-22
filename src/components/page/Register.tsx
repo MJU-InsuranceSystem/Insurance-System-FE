@@ -12,7 +12,7 @@ import {
     ErrorMessage,
     Select,
 } from '../styles/RegisterStyles';
-import { registerUser } from '../../api/registerApi';
+import { registerUser, RegisterData } from '../../api/registerApi';
 
 const Register: React.FC = () => {
     const [name, setName] = useState('');
@@ -104,7 +104,7 @@ const Register: React.FC = () => {
         event.preventDefault();
         if (!isFormValid()) return;
 
-        const userData: any = {
+        const userData: RegisterData = {
             name,
             email,
             password,
@@ -117,7 +117,7 @@ const Register: React.FC = () => {
         };
 
         if (userType === 'WORKER') {
-            userData.hireYear = hireYear;
+            userData.hireYear = Number(hireYear);
             userData.role = role;
         }
 
@@ -136,7 +136,6 @@ const Register: React.FC = () => {
             <Header />
             <SignUpWrapper>
                 <form onSubmit={handleSignUp}>
-                    <Title>아래 <span>회원가입</span>을 위한 정보를 입력해주세요.</Title>
                     <Input
                         type="text"
                         placeholder="이름을 입력해주세요."
@@ -233,12 +232,18 @@ const Register: React.FC = () => {
                                     </option>
                                 ))}
                             </Select>
-                            <Input
-                                type="text"
-                                placeholder="역할을 입력하세요"
+                            <Select
                                 value={role}
                                 onChange={(e) => setRole(e.target.value)}
-                            />
+                            >
+                                <option value="">역할을 선택하세요</option>
+                                <option value="계약 관리 팀">계약 관리 팀</option>
+                                <option value="상품 기획 팀">상품 기획 팀</option>
+                                <option value="보상 지원 팀">보상 지원 팀</option>
+                                <option value="보험 관리 팀">보험 관리 팀</option>
+                                <option value="UW 팀">UW 팀</option>
+                                <option value="납부 관리 팀">납부 관리 팀</option>
+                            </Select>
                         </>
                     )}
 

@@ -7,14 +7,18 @@ export type InsurancePlan = {
     insurancePlanType: string;
     plannerName: string;
     description: string;
+    reviewStatus: string;
+    fileUrl: string;
 };
 
 // 보험 플랜 목록 가져오기
 export const getInsurancePlans = async (): Promise<InsurancePlan[]> => {
     try {
-        const response = await axiosInstance.get<InsurancePlan[]>('/api/insurance/plans');
+        const response = await axiosInstance.get<{
+            data: InsurancePlan[];
+        }>('/api/insurances/plans');
         console.log('플랜 데이터 가져오기 성공:', response.data);
-        return response.data;
+        return response.data.data; // 응답 데이터 배열 반환
     } catch (error) {
         console.error('플랜 가져오기 중 오류 발생:', error);
 
@@ -24,6 +28,7 @@ export const getInsurancePlans = async (): Promise<InsurancePlan[]> => {
                 error.response?.data?.message || '플랜 데이터를 가져오는 데 실패했습니다.';
             throw new Error(errorMessage);
         }
+
         throw new Error('플랜 가져오기 중 알 수 없는 오류가 발생했습니다.');
     }
 };

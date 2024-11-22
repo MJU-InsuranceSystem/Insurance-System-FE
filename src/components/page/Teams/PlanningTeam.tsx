@@ -16,17 +16,14 @@ const PlanningTeam: React.FC = () => {
     // useNavigate 훅 초기화
     const navigate = useNavigate();
 
-    // "상품을 기획한다" 버튼 클릭 핸들러
+    // "상품 기획하기" 버튼 클릭 핸들러
     const handleNavigatePlanning = () => {
-        navigate('/planning'); // 원하는 경로로 이동 (예: /planning)
+        navigate('/planning'); // 상품 기획 화면으로 이동
     };
 
-    const handleNavigateApprove = () => {
-        navigate('/approve');
-    }
-    // "상품을 설계한다" 버튼 클릭 핸들러
+    // "상품 전체조회하기" 버튼 클릭 핸들러
     const handleNavigateViewAll = () => {
-        navigate('/viewAll'); // 상품 설계 화면으로 이동
+        navigate('/viewAll'); // 상품 전체 조회 화면으로 이동
     };
 
 
@@ -46,8 +43,7 @@ const PlanningTeam: React.FC = () => {
                     <SubMenuTitle>아래 중 수행하실 번호를 입력해주세요.</SubMenuTitle>
                     <MenuItems>
                         <MenuItem onClick={handleNavigatePlanning}>1. 상품 기획하기</MenuItem>
-                        <MenuItem onClick={handleNavigateApprove}> 2. 상품 허가하기</MenuItem>
-                        <MenuItem onClick={handleNavigateViewAll}>3. 상품 전체조회하기</MenuItem>
+                        <MenuItem onClick={handleNavigateViewAll}>2. 상품 전체조회하기</MenuItem>
                     </MenuItems>
                 </QuickMenu>
             </Container>

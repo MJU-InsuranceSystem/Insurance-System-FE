@@ -6,7 +6,7 @@ import Register from '../page/Register';
 import AdminHome from '../page/AdminHome'; // AdminHome 컴포넌트 임포트
 import Planning from '../page/SuvMenus/Planning'; // Planning 컴포넌트 임포트
 import ViewAll from '../page/SuvMenus/ViewAll'; // ViewAll 컴포넌트 임포트
-import Approve from '../page/SuvMenus/Approve'; // Planning 컴포넌트 임포트
+import CreateProduct from '../page/SuvMenus/CreateProduct'; // CreateProduct 컴포넌트 임포트
 import PlanningTeam from '../page/Teams/PlanningTeam'; // 각 부서별 컴포넌트 임포트
 import UWTeam from '../page/Teams/UWTeam';
 import SalesEducationTeam from '../page/Teams/SalesEducationTeam';
@@ -18,6 +18,9 @@ import CompensationTeam from '../page/Teams/CompensationTeam';
 import ContractManagementTeam from '../page/Teams/ContractManagementTeam';
 import CustomerManagementTeam from '../page/Teams/CustomerManagementTeam';
 import EmployeeManagementTeam from '../page/Teams/EmployeeManagementTeam';
+import InsuranceList from '../page/SuvMenus/GetInsuranceList'; // 보험 상품 전체 조회 컴포넌트 추가
+import InsuranceDetail from '../page/SuvMenus/InsuranceDetail'; // 보험 상세 조회 컴포넌트 추가
+import CreateContract from '../page/SuvMenus/CreateContract'; // 계약 생성 컴포넌트 추가
 
 const Router: React.FC = () => {
     return (
@@ -42,10 +45,17 @@ const Router: React.FC = () => {
                 <Route path="/customerManagementTeam" element={<CustomerManagementTeam />} />
                 <Route path="/employeeManagementTeam" element={<EmployeeManagementTeam />} />
 
-                {/* New Pages */}
+                {/* 서비스 메뉴 페이지 경로 */}
                 <Route path="/planning" element={<Planning />} />
-                <Route path="/viewAll" element={<ViewAll />} /> {/* ViewAll 경로 */}
-                <Route path="/approve" element={<Approve />} />
+                <Route path="/viewAll" element={<ViewAll />} />
+                <Route path="/createProduct" element={<CreateProduct />} />
+                <Route path="/insuranceList" element={<InsuranceList />} />
+
+                {/* 보험 상세 조회 페이지 */}
+                <Route path="/insurance/:insuranceId" element={<InsuranceDetail />} />
+
+                {/* 계약 생성 페이지 */}
+                <Route path="/createContract/:insuranceId" element={<CreateContract />} />
             </Routes>
         </BrowserRouter>
     );

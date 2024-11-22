@@ -17,7 +17,7 @@ export type RegisterResponse = {
 };
 
 // 회원가입 요청 데이터 타입 정의
-type RegisterData = {
+export type RegisterData = {
     name: string;
     email: string;
     password: string;
