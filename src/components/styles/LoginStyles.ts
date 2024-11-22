@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
+    align-items: flex-start;
     min-height: 100vh;
     background-color: #ffffff;
     padding: 20px;
@@ -15,12 +15,12 @@ export const Card = styled.div`
     border-radius: 10px;
     width: 400px;
     box-sizing: border-box;
-    text-align: center; 
+    text-align: center;
 `;
 
 export const Title = styled.h2`
     width: 100%;
-    text-align: center; 
+    text-align: center;
     margin-bottom: 30px;
     color: black;
     font-size: 24px;
@@ -41,19 +41,18 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-    width: 110%;
+    width: 100%;
     padding: 12px;
-    background-color: transparent;
+    background-color: #1058A3;
     color: white;
-    border: 1px solid #767676;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 10px;
     margin-top: 10px;
     transition: all 0.3s ease;
-
+    
     &:hover {
-        background-color: #555555;
+        background-color: #084a83;
     }
 
     &:disabled {
@@ -63,7 +62,14 @@ export const Button = styled.button`
 `;
 
 export const RegisterButton = styled(Button)`
+    background-color: transparent;
     color: black;
+    border: 1px solid #767676;
+    margin-top: 20px;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
 `;
 
 export const ErrorMessage = styled.div`

@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../Header';
-import { Card, Title, Input, Button, Wrapper, RegisterButton, ErrorMessage } from '../styles/LoginStyles';
+import {
+    Card,
+    Title,
+    Input,
+    Button,
+    Wrapper,
+    RegisterButton,
+    ErrorMessage
+} from '../styles/LoginStyles';
 import { loginUser } from '../../api/loginApi';
 
 const Login: React.FC = () => {
@@ -15,50 +23,51 @@ const Login: React.FC = () => {
     const validateEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         setEmailError(email.trim() === '' ? null : !emailRegex.test(email) ? '유효한 이메일 주소를 입력해주세요.' : null);
-        console.log(`이메일 유효성 검사: ${email}, 결과: ${emailError}`); // 유효성 검사 결과 출력
     };
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newEmail = e.target.value;
         setEmail(newEmail);
-        console.log(`이메일 변경: ${newEmail}`); // 이메일 변경 시 로그
         validateEmail(newEmail);
     };
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(`폼 제출됨: 이메일=${email}, 비밀번호=${password}`); // 폼 제출 로그
+
         if (!isFormValid()) {
-            console.log('폼 유효하지 않음'); // 폼이 유효하지 않을 때 로그
+            console.log('폼 유효하지 않음');
             return;
         }
 
         try {
             const response = await loginUser(email, password);
-            console.log('로그인 응답:', response); // 응답 로그로 확인
 
-            // 로그인 성공 조건 수정
             if (response.httpStatusCode === 200 && response.responseCode === 'SUCCESS') {
-                console.log('로그인 성공');
-                setLoginError(null); // 로그인 오류 메시지 초기화
-                document.cookie = `accessToken=${response.data?.accessToken}; path=/`; // 쿠키 설정 확인
-                console.log('쿠키 설정 완료'); // 쿠키 설정 로그
-                console.log('navigate("/") 호출됨'); // navigate 호출 로그
-                navigate('/'); // 성공 시 홈 화면으로 이동
+                setLoginError(null);
+
+                // 로그인 후 액세스 토큰을 로컬스토리지에 저장
+                const accessToken = response.data?.accessToken;
+                if (accessToken) {
+                    localStorage.setItem('accessToken', accessToken);  // 로컬스토리지에 저장
+                }
+
+                // 이메일에 "admin"이 포함된 경우 AdminHome으로 이동
+                if (email.toLowerCase().includes('admin')) {
+                    navigate('/adminHome');
+                } else {
+                    navigate('/');
+                }
             } else {
-                console.log('로그인 실패 조건에 진입');
-                setLoginError('이메일 또는 비밀번호가 올바르지 않습니다.'); // 고정된 실패 메시지
+                setLoginError('이메일 또는 비밀번호가 올바르지 않습니다.');
             }
         } catch (error) {
-            console.error('로그인 요청 중 오류 발생:', error); // 오류 발생 시 로그
+            console.error('로그인 요청 중 오류 발생:', error);
             setLoginError(error instanceof Error ? error.message : '로그인에 실패했습니다. 다시 시도해 주세요.');
         }
     };
 
     const isFormValid = () => {
-        const isValid = email.trim() !== '' && password.trim() !== '' && emailError === null;
-        console.log(`폼 유효성 검사: ${isValid}`); // 폼 유효성 검사 결과 로그
-        return isValid;
+        return email.trim() !== '' && password.trim() !== '' && emailError === null;
     };
 
     return (
@@ -87,7 +96,6 @@ const Login: React.FC = () => {
                             value={password}
                             onChange={(e) => {
                                 setPassword(e.target.value);
-                                console.log(`비밀번호 변경: ${e.target.value}`); // 비밀번호 변경 시 로그
                             }}
                             required
                             autoComplete="current-password"

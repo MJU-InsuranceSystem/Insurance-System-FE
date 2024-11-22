@@ -6,20 +6,20 @@ export const SignUpWrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding: 40px 20px;
-    background-color: #f9f9f9; /* 약간 밝은 배경색으로 변경 */
+    background-color: #f9f9f9;
     min-height: 100vh;
-    max-width: 800px; /* 고정된 너비 */
-    margin: 0 auto; /* 중앙 정렬 */
+    max-width: 800px;
+    margin: 0 auto;
     box-sizing: border-box;
 `;
 
 export const Title = styled.h2`
     text-align: center;
-    font-size: 26px; /* 더 큰 폰트 크기 */
+    font-size: 26px;
     color: #333333;
     margin-bottom: 20px;
     & span {
-        color: #0b79d0; /* 강조된 텍스트 색상 변경 */
+        color: #0b79d0;
         font-weight: bold;
     }
 `;
@@ -27,18 +27,18 @@ export const Title = styled.h2`
 export const Input = styled.input`
     width: 100%;
     max-width: 700px;
-    padding: 12px; /* 더 두꺼운 패딩 */
+    padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid #d1d1d1; /* 경계색 추가 */
-    border-radius: 4px; /* 경계 반경 추가 */
-    background-color: #ffffff; /* 흰색 배경 */
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    background-color: #ffffff;
     color: #333333;
     outline: none;
     &::placeholder {
         color: #a3a3a3;
     }
     &:focus {
-        border-color: #0b79d0; /* 포커스 시 경계색 */
+        border-color: #0b79d0;
     }
 `;
 
@@ -57,7 +57,7 @@ export const Select = styled.select`
 export const Button = styled.button`
     width: 100%;
     padding: 15px;
-    background-color: #0b79d0; /* 파란색 버튼 */
+    background-color: #0b79d0;
     color: white;
     border: none;
     cursor: pointer;
@@ -89,5 +89,5 @@ export const ErrorMessage = styled.div`
     color: red;
     font-size: 12px;
     margin-top: 5px;
-    text-align: left; /* 에러 메시지 왼쪽 정렬 */
+    text-align: left;
 `;

@@ -30,6 +30,8 @@ const Register: React.FC = () => {
     const [isConsentChecked, setIsConsentChecked] = useState(false);
     const [userType, setUserType] = useState<'CUSTOMER' | 'WORKER'>('CUSTOMER');
     const [country, setCountry] = useState('');
+    const [hireYear, setHireYear] = useState<number | ''>('');
+    const [role, setRole] = useState<string>('');
     const navigate = useNavigate();
 
     const validateEmail = (email: string) => {
@@ -43,8 +45,8 @@ const Register: React.FC = () => {
     };
 
     const validatePhone = (phone: string) => {
-        const phoneRegex = /^\+\d{1,3}-\d{3}-\d{3,4}-\d{4}$/;
-        setPhoneError(phoneRegex.test(phone) ? null : '전화번호는 +국가코드-XXX-XXX-XXXX 형식으로 입력해야 합니다.');
+        const phoneRegex = /^010-\d{4}-\d{4}$/;
+        setPhoneError(phoneRegex.test(phone) ? null : '전화번호는 010-XXXX-XXXX 형식으로 입력해야 합니다.');
     };
 
     const validateZipCode = (zipCode: string) => {
@@ -67,8 +69,8 @@ const Register: React.FC = () => {
             alert('이름은 반드시 문자열로 입력해야 합니다.');
             return false;
         }
-        if (!phone.trim() || !/^\+\d{1,3}-\d{3}-\d{3,4}-\d{4}$/.test(phone)) {
-            alert('전화번호는 +국가코드-XXX-XXX-XXXX 형식으로 입력해야 합니다.');
+        if (!phone.trim() || !/^010-\d{4}-\d{4}$/.test(phone)) {
+            alert('전화번호는 010-XXXX-XXXX 형식으로 입력해야 합니다.');
             return false;
         }
         if (!email.trim()) {
@@ -91,6 +93,10 @@ const Register: React.FC = () => {
             alert('개인정보 처리에 동의해주세요.');
             return false;
         }
+        if (userType === 'WORKER' && (!hireYear || !role.trim())) {
+            alert('직원의 경우 고용 연도와 역할을 입력해야 합니다.');
+            return false;
+        }
         return true;
     };
 
@@ -98,7 +104,7 @@ const Register: React.FC = () => {
         event.preventDefault();
         if (!isFormValid()) return;
 
-        const userData = {
+        const userData: any = {
             name,
             email,
             password,
@@ -110,12 +116,17 @@ const Register: React.FC = () => {
             userType,
         };
 
+        if (userType === 'WORKER') {
+            userData.hireYear = hireYear;
+            userData.role = role;
+        }
+
         try {
             await registerUser(userData);
             alert('회원가입이 완료되었습니다!');
             navigate('/');
         } catch (error) {
-            console.error(error); // 오류를 콘솔에 출력하여 디버깅에 도움을 줌
+            console.error(error);
             alert('회원가입에 실패했습니다. 다시 시도해 주세요.');
         }
     };
@@ -139,7 +150,7 @@ const Register: React.FC = () => {
 
                     <Input
                         type="text"
-                        placeholder="전화번호를 입력해주세요. (예: +1-123-456-7890)"
+                        placeholder="전화번호를 입력해주세요. (예: 010-XXXX-XXXX)"
                         value={phone}
                         onChange={(e) => {
                             setPhone(e.target.value);
@@ -208,6 +219,28 @@ const Register: React.FC = () => {
                         <option value="CUSTOMER">CUSTOMER</option>
                         <option value="WORKER">WORKER</option>
                     </Select>
+
+                    {userType === 'WORKER' && (
+                        <>
+                            <Select
+                                value={hireYear}
+                                onChange={(e) => setHireYear(Number(e.target.value))}
+                            >
+                                <option value="">고용 연도를 선택하세요</option>
+                                {Array.from({ length: 2024 - 1960 + 1 }, (_, i) => (
+                                    <option key={i} value={1960 + i}>
+                                        {1960 + i}
+                                    </option>
+                                ))}
+                            </Select>
+                            <Input
+                                type="text"
+                                placeholder="역할을 입력하세요"
+                                value={role}
+                                onChange={(e) => setRole(e.target.value)}
+                            />
+                        </>
+                    )}
 
                     <CheckboxWrapper>
                         <Checkbox

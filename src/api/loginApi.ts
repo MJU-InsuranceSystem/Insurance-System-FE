@@ -21,13 +21,6 @@ export const loginUser = async (email: string, password: string): Promise<LoginR
                 withCredentials: true, // 쿠키 포함 설정
             }
         );
-        console.log('로그인 성공:', response.data);
-
-        // 응답 데이터가 토큰 정보를 포함하는 경우 처리
-        if (response.data && response.data.data) {
-            console.log('Access Token:', response.data.data.accessToken);
-        }
-
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {

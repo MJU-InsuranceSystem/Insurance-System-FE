@@ -12,6 +12,8 @@ export type RegisterResponse = {
     zipCode: string;
     birthDay: string;
     userType: string;
+    hireYear?: number; // 직원일 경우 고용 연도
+    role?: string;     // 직원일 경우 역할
 };
 
 // 회원가입 요청 데이터 타입 정의
@@ -19,12 +21,14 @@ type RegisterData = {
     name: string;
     email: string;
     password: string;
-    phoneNumber: string; // 국가 코드 포함
+    phoneNumber: string;
     country: string;
     city: string;
     zipCode: string;
     birthDay: string;
     userType: 'CUSTOMER' | 'WORKER'; // 'CUSTOMER' 또는 'WORKER' 중 하나
+    hireYear?: number; // 직원일 경우 고용 연도
+    role?: string;     // 직원일 경우 역할
 };
 
 // 회원가입 API 함수
