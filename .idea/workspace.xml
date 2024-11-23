@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7edc1980-f65e-47fe-9e95-e60c78af3c9f" name="변경" comment="&quot;feat: Implement signup, home, and login pages&quot;">
+      <change afterPath="$PROJECT_DIR$/src/api/getSubscriberContractsApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/MyPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/MyPageStyles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/createContractApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/createContractApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/ViewAll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ViewAll.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/Router.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +102,8 @@
       <recent name="$PROJECT_DIR$/src/types" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/page/SuvMenus" />
       <recent name="$PROJECT_DIR$/src/components/page" />
+      <recent name="$PROJECT_DIR$/src/components/page/SuvMenus" />
       <recent name="$PROJECT_DIR$/src/components/page/Teams" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src" />
@@ -131,7 +139,7 @@
       <workItem from="1731627511653" duration="157000" />
       <workItem from="1731898451381" duration="9183000" />
       <workItem from="1731977023612" duration="42322000" />
-      <workItem from="1732277763652" duration="15633000" />
+      <workItem from="1732277763652" duration="26048000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;feat: Implement signup, home, and login pages&quot;">
       <option name="closed" value="true" />
@@ -157,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730964858026</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="&quot;feat: Implement signup, home, and login pages&quot;">
+      <option name="closed" value="true" />
+      <created>1732300175706</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732300175706</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

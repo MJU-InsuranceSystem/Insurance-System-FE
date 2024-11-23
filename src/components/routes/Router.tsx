@@ -21,6 +21,7 @@ import EmployeeManagementTeam from '../page/Teams/EmployeeManagementTeam';
 import InsuranceList from '../page/SuvMenus/GetInsuranceList'; // 보험 상품 전체 조회 컴포넌트 추가
 import InsuranceDetail from '../page/SuvMenus/InsuranceDetail'; // 보험 상세 조회 컴포넌트 추가
 import CreateContract from '../page/SuvMenus/CreateContract'; // 계약 생성 컴포넌트 추가
+import MyPage from '../page/MyPage'; // MyPage 컴포넌트 추가
 
 const Router: React.FC = () => {
     return (
@@ -56,6 +57,9 @@ const Router: React.FC = () => {
 
                 {/* 계약 생성 페이지 */}
                 <Route path="/createContract/:insuranceId" element={<CreateContract />} />
+
+                {/* 마이페이지 */}
+                <Route path="/myPage/:subscriberId" element={<MyPage />} />
             </Routes>
         </BrowserRouter>
     );
