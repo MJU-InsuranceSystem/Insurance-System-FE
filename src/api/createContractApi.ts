@@ -1,27 +1,27 @@
-import axiosInstance from './axiosInstance';
-import { AxiosError } from 'axios';
+import axiosInstance from "./axiosInstance";
+import { AxiosError } from "axios";
 
 export interface ContractRequest {
     contractRequestDto: {
         paymentDate: string;
-        paymentMethod: string; // 문자열로 전달
+        paymentMethod: string;
         paymentAccount: string;
-        bank: string; // 문자열로 전달
+        bank: string;
         startDate: string;
         endDate: string;
     };
     driverLicenseRequestDto: {
         licenseNumber: string;
-        licenseType: string; // 문자열로 전달
+        licenseType: string;
         issueDate: string;
         validityPeriod: string;
     };
     carRequestDto: {
         carNumber: string;
-        carType: string; // 문자열로 전달
+        carType: string;
         modelYear: string;
         registrationDate: string;
-        ownershipStatus: string; // 문자열로 전달
+        ownershipStatus: string;
         accidentFreePeriod: string;
     };
 }

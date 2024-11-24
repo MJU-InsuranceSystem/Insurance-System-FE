@@ -23,7 +23,8 @@ import InsuranceDetail from '../page/SuvMenus/InsuranceDetail';
 import CreateContract from '../page/SuvMenus/CreateContract';
 import MyPage from '../page/MyPage';
 import ContractDetailsPage from '../page/SuvMenus/ContractDetails';
-import AdminContracts from '../page/SuvMenus/AdminContracts'; // AdminContracts 컴포넌트 추가
+import AdminContracts from '../page/SuvMenus/AdminContracts';
+import ContractReviewPage from '../page/SuvMenus/ContractReviewPage'; // 인수 심사 페이지 추가
 
 const Router: React.FC = () => {
     return (
@@ -52,7 +53,8 @@ const Router: React.FC = () => {
                 <Route path="/createContract/:insuranceId" element={<CreateContract />} />
                 <Route path="/myPage/:subscriberId" element={<MyPage />} />
                 <Route path="/contracts/details/:contractId" element={<ContractDetailsPage />} />
-                <Route path="/admin/contracts" element={<AdminContracts />} /> {/* AdminContracts 추가 */}
+                <Route path="/admin/contracts" element={<AdminContracts />} />
+                <Route path="/contract-review/:contractId" element={<ContractReviewPage />} /> {/* 인수 심사 경로 추가 */}
             </Routes>
         </BrowserRouter>
     );

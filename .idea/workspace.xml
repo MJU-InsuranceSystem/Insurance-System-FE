@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7edc1980-f65e-47fe-9e95-e60c78af3c9f" name="변경" comment="&quot;feat: Implement signup, home, and login pages&quot;">
-      <change afterPath="$PROJECT_DIR$/src/api/getAllContractsApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/getContractDetailsApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/AdminContracts.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetails.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/styles/AdminContractsStyles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/styles/ContractDetailsStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/underWriteApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractReviewPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/ContractReviewStyles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/createContractApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/createContractApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getInsuranceListApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getInsuranceListApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getSubscriberContractsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getSubscriberContractsApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/AdminHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/AdminHome.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/MyPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/MyPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetails.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/GetInsuranceList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/GetInsuranceList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/Router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/styles/MyPageStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/MyPageStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/styles/ContractDetailsStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/ContractDetailsStyles.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -146,7 +139,7 @@
       <workItem from="1731627511653" duration="157000" />
       <workItem from="1731898451381" duration="9183000" />
       <workItem from="1731977023612" duration="42322000" />
-      <workItem from="1732277763652" duration="39250000" />
+      <workItem from="1732277763652" duration="42547000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;feat: Implement signup, home, and login pages&quot;">
       <option name="closed" value="true" />

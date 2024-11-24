@@ -31,3 +31,18 @@ export const LoadingSpinner = styled.div`
     font-size: 16px;
     color: #555;
 `;
+
+export const Button = styled.button`
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+`;

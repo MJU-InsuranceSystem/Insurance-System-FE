@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { createContract, ContractRequest } from "../../../api/createContractApi";
+import { createContract } from "../../../api/createContractApi";
 import Header from "../../Header";
 import {
     Container,
@@ -13,11 +13,36 @@ import {
     SuccessMessage,
 } from "../../styles/CreateContractStyles";
 
+interface ContractData {
+    contractRequestDto: {
+        paymentDate: string;
+        paymentMethod: string;
+        paymentAccount: string;
+        bank: string;
+        startDate: string;
+        endDate: string;
+    };
+    driverLicenseRequestDto: {
+        licenseNumber: string;
+        licenseType: string;
+        issueDate: string;
+        validityPeriod: string;
+    };
+    carRequestDto: {
+        carNumber: string;
+        carType: string;
+        modelYear: string;
+        registrationDate: string;
+        ownershipStatus: string;
+        accidentFreePeriod: string;
+    };
+}
+
 const CreateContract: React.FC = () => {
     const { insuranceId } = useParams<{ insuranceId: string }>();
     const navigate = useNavigate();
 
-    const [contractData, setContractData] = useState({
+    const [contractData, setContractData] = useState<ContractData>({
         contractRequestDto: {
             paymentDate: "",
             paymentMethod: "",
@@ -51,7 +76,7 @@ const CreateContract: React.FC = () => {
         setContractData((prev) => ({
             ...prev,
             [parent]: {
-                ...prev[parent as keyof typeof contractData],
+                ...prev[parent as keyof ContractData],
                 [key]: value,
             },
         }));
@@ -69,22 +94,27 @@ const CreateContract: React.FC = () => {
             setError(null);
             setSuccess(null);
 
+            console.log("=== API 요청 시작 ===");
             console.log("Insurance ID:", insuranceId);
             console.log("Request Data:", JSON.stringify(contractData, null, 2));
 
             const response = await createContract(insuranceId, contractData);
-            setSuccess("계약이 성공적으로 생성되었습니다! 고객 ID: " + response.customerId);
+            console.log("=== API 요청 성공 ===");
+            console.log("Response:", response);
+
+            setSuccess(`계약이 성공적으로 생성되었습니다! 고객 ID: ${response.customerId}`);
             navigate("/");
         } catch (error: unknown) {
-            console.error("Request Failed:", error);
+            console.error("=== API 요청 실패 ===");
             if (error instanceof Error) {
+                console.error("Error Message:", error.message);
                 setError(error.message);
             } else {
-                setError("예기치 않은 오류가 발생했습니다.");
+                console.error("Unexpected Error:", error);
+                setError("알 수 없는 오류가 발생했습니다.");
             }
         }
     };
-
 
     return (
         <Container>
@@ -196,6 +226,14 @@ const CreateContract: React.FC = () => {
                     <option value="오토바이">오토바이</option>
                     <option value="특수차량">특수차량</option>
                 </select>
+                <Label>모델 연도</Label>
+                <Input
+                    type="text"
+                    name="carRequestDto.modelYear"
+                    value={contractData.carRequestDto.modelYear}
+                    onChange={handleChange}
+                    placeholder="모델 연도를 입력하세요"
+                />
                 <Label>차량 등록 날짜</Label>
                 <Input
                     type="date"
@@ -210,9 +248,9 @@ const CreateContract: React.FC = () => {
                     onChange={handleChange}
                 >
                     <option value="">선택</option>
-                    <option value="자기 소유">자기 소유</option>
+                    <option value="소유">소유</option>
                     <option value="리스">리스</option>
-                    <option value="렌트">렌트</option>
+                    <option value="렌탈">렌탈</option>
                 </select>
                 <Label>무사고 기간 (개월)</Label>
                 <Input
