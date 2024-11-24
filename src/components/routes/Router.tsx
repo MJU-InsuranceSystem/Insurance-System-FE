@@ -32,6 +32,8 @@ import PaymentHistoryPage from "../page/SuvMenus/PaymentHistoryPage"; // 납부 
 import AccidentReportPage from "../page/SuvMenus/AccidentReportPage"; // 사고 접수하기 페이지 추가
 import AccidentListPage from "../page/SuvMenus/AccidentListPage"; // 사고 내역 조회 페이지 추가
 import AccidentDetailsPage from "../page/SuvMenus/AccidentDetailsPage"; // 사고 상세 정보 페이지 추가
+import CompensationTeam_Accident from "../page/Teams/CompensationTeam_Accident"; // 보험 지원팀 사고 관리 경로 추가
+import CompensationTeam_Claim from "../page/Teams/CompensationTeam_Claim"; //이건 만약 보험 지원팀 페이지 안나누면 필요 없을 듯
 
 const Router: React.FC = () => {
     return (
@@ -69,6 +71,9 @@ const Router: React.FC = () => {
                 <Route path="/accidents/report/:contractId" element={<AccidentReportPage />} /> {/* 사고 접수하기 */}
                 <Route path="/accident-list" element={<AccidentListPage />} /> {/* 사고 내역 조회 */}
                 <Route path="/accidents/details/:accidentId" element={<AccidentDetailsPage />} /> {/* 사고 상세 조회 */}
+                <Route path="/compensation-team" element={<CompensationTeam />} />
+                <Route path="/compensation-team/accidents" element={<CompensationTeam_Accident />} /> {/* 사건 전체 리스트 경로 추가 */}
+                <Route path="/claims" element={<CompensationTeam_Claim />} /> 
             </Routes>
         </BrowserRouter>
     );

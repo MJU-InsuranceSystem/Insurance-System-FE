@@ -1,12 +1,26 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+    Container,
+    Title,
+    ButtonContainer,
+    Button,
+} from "../../styles/CompensationTeamStyles";
 
-const PlanningTeam: React.FC = () => {
+const CompensationTeam: React.FC = () => {
     return (
-        <div>
-            <h1>상품 기획팀</h1>
-            <p>상품 기획팀의 업무를 관리하고 조정할 수 있습니다.</p>
-        </div>
+        <Container>
+            <Title>보상 지원 팀</Title>
+            <ButtonContainer>
+                <Link to="/compensation-team/accidents">
+                    <Button>사건 전체 리스트 조회</Button>
+                </Link>
+                <Link to="/claims">
+                    <Button>보험 청구 내역 조회</Button>
+                </Link>
+            </ButtonContainer>
+        </Container>
     );
 };
 
-export default PlanningTeam;
+export default CompensationTeam;
