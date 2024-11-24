@@ -10,7 +10,7 @@ import {
     LoadingSpinner,
     ErrorText,
     Button,
-} from "../../styles/ContractDetailsStyles"; // 스타일 정의 필요
+} from "../../styles/ContractDetailsStyles";
 
 const ContractDetailsPage: React.FC = () => {
     const { contractId } = useParams<{ contractId: string }>();
@@ -46,6 +46,14 @@ const ContractDetailsPage: React.FC = () => {
             return;
         }
         navigate(`/contract-review/${contractId}`);
+    };
+
+    const handlePaymentHistoryClick = () => {
+        if (!contractId) {
+            setError("유효하지 않은 계약 ID입니다.");
+            return;
+        }
+        navigate(`/payment-history/${contractId}`); // 납부 내역 조회 페이지로 이동
     };
 
     if (loading) {
@@ -96,6 +104,7 @@ const ContractDetailsPage: React.FC = () => {
                 </DetailsSection>
             )}
             <Button onClick={handleReviewClick}>인수 심사</Button>
+            <Button onClick={handlePaymentHistoryClick}>납부 확인 조회하기</Button> {/* 납부 내역 조회 페이지로 이동 */}
         </Container>
     );
 };

@@ -5,15 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7edc1980-f65e-47fe-9e95-e60c78af3c9f" name="변경" comment="&quot;feat: Implement signup, home, and login pages&quot;">
-      <change afterPath="$PROJECT_DIR$/src/api/underWriteApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractReviewPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/styles/ContractReviewStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/accountApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/getAccidentDetailsApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/getAllAccidentsApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/getPaymentHistoryApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/paymentApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/reportAccidentApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/AccidentDetailsPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/AccidentListPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/AccidentReportPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/AccountInfoPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/PaymentHistoryPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/PaymentPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/PaymentSubmissionPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/AccidentDetailsStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/AccidentListStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/AccidentReportStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/AccountInfoStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/PaymentHistoryStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/PaymentStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/PaymentSubmissionStyles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/createContractApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/createContractApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetails.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/Router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/styles/ContractDetailsStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/ContractDetailsStyles.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +156,7 @@
       <workItem from="1731627511653" duration="157000" />
       <workItem from="1731898451381" duration="9183000" />
       <workItem from="1731977023612" duration="42322000" />
-      <workItem from="1732277763652" duration="42547000" />
+      <workItem from="1732277763652" duration="54474000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;feat: Implement signup, home, and login pages&quot;">
       <option name="closed" value="true" />

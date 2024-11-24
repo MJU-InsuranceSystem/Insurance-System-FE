@@ -1,30 +1,37 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '../page/Home';
-import Login from '../page/Login';
-import Register from '../page/Register';
-import AdminHome from '../page/AdminHome';
-import Planning from '../page/SuvMenus/Planning';
-import ViewAll from '../page/SuvMenus/ViewAll';
-import CreateProduct from '../page/SuvMenus/CreateProduct';
-import PlanningTeam from '../page/Teams/PlanningTeam';
-import UWTeam from '../page/Teams/UWTeam';
-import SalesEducationTeam from '../page/Teams/SalesEducationTeam';
-import MarketingTeam from '../page/Teams/MarketingTeam';
-import SalesManagementTeam from '../page/Teams/SalesManagementTeam';
-import RecruitmentTeam from '../page/Teams/RecruitmentTeam';
-import PayrollTeam from '../page/Teams/PayrollTeam';
-import CompensationTeam from '../page/Teams/CompensationTeam';
-import ContractManagementTeam from '../page/Teams/ContractManagementTeam';
-import CustomerManagementTeam from '../page/Teams/CustomerManagementTeam';
-import EmployeeManagementTeam from '../page/Teams/EmployeeManagementTeam';
-import InsuranceList from '../page/SuvMenus/GetInsuranceList';
-import InsuranceDetail from '../page/SuvMenus/InsuranceDetail';
-import CreateContract from '../page/SuvMenus/CreateContract';
-import MyPage from '../page/MyPage';
-import ContractDetailsPage from '../page/SuvMenus/ContractDetails';
-import AdminContracts from '../page/SuvMenus/AdminContracts';
-import ContractReviewPage from '../page/SuvMenus/ContractReviewPage'; // 인수 심사 페이지 추가
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "../page/Home";
+import Login from "../page/Login";
+import Register from "../page/Register";
+import AdminHome from "../page/AdminHome";
+import Planning from "../page/SuvMenus/Planning";
+import ViewAll from "../page/SuvMenus/ViewAll";
+import CreateProduct from "../page/SuvMenus/CreateProduct";
+import PlanningTeam from "../page/Teams/PlanningTeam";
+import UWTeam from "../page/Teams/UWTeam";
+import SalesEducationTeam from "../page/Teams/SalesEducationTeam";
+import MarketingTeam from "../page/Teams/MarketingTeam";
+import SalesManagementTeam from "../page/Teams/SalesManagementTeam";
+import RecruitmentTeam from "../page/Teams/RecruitmentTeam";
+import PayrollTeam from "../page/Teams/PayrollTeam";
+import CompensationTeam from "../page/Teams/CompensationTeam";
+import ContractManagementTeam from "../page/Teams/ContractManagementTeam";
+import CustomerManagementTeam from "../page/Teams/CustomerManagementTeam";
+import EmployeeManagementTeam from "../page/Teams/EmployeeManagementTeam";
+import InsuranceList from "../page/SuvMenus/GetInsuranceList";
+import InsuranceDetail from "../page/SuvMenus/InsuranceDetail";
+import CreateContract from "../page/SuvMenus/CreateContract";
+import MyPage from "../page/MyPage";
+import ContractDetailsPage from "../page/SuvMenus/ContractDetails";
+import AdminContracts from "../page/SuvMenus/AdminContracts";
+import ContractReviewPage from "../page/SuvMenus/ContractReviewPage";
+import PaymentPage from "../page/SuvMenus/PaymentPage";
+import AccountInfoPage from "../page/SuvMenus/AccountInfoPage"; // 계좌정보 입력하기 페이지 추가
+import PaymentSubmissionPage from "../page/SuvMenus/PaymentSubmissionPage"; // 납부하기 페이지 추가
+import PaymentHistoryPage from "../page/SuvMenus/PaymentHistoryPage"; // 납부 내역 조회 페이지 추가
+import AccidentReportPage from "../page/SuvMenus/AccidentReportPage"; // 사고 접수하기 페이지 추가
+import AccidentListPage from "../page/SuvMenus/AccidentListPage"; // 사고 내역 조회 페이지 추가
+import AccidentDetailsPage from "../page/SuvMenus/AccidentDetailsPage"; // 사고 상세 정보 페이지 추가
 
 const Router: React.FC = () => {
     return (
@@ -54,7 +61,14 @@ const Router: React.FC = () => {
                 <Route path="/myPage/:subscriberId" element={<MyPage />} />
                 <Route path="/contracts/details/:contractId" element={<ContractDetailsPage />} />
                 <Route path="/admin/contracts" element={<AdminContracts />} />
-                <Route path="/contract-review/:contractId" element={<ContractReviewPage />} /> {/* 인수 심사 경로 추가 */}
+                <Route path="/contract-review/:contractId" element={<ContractReviewPage />} />
+                <Route path="/payments/contracts/:contractId" element={<PaymentPage />} />
+                <Route path="/accounts/:contractId" element={<AccountInfoPage />} /> {/* 계좌정보 입력하기 */}
+                <Route path="/payment-submission/:contractId" element={<PaymentSubmissionPage />} /> {/* 납부하기 */}
+                <Route path="/payment-history/:contractId" element={<PaymentHistoryPage />} /> {/* 납부 내역 조회 */}
+                <Route path="/accidents/report/:contractId" element={<AccidentReportPage />} /> {/* 사고 접수하기 */}
+                <Route path="/accident-list" element={<AccidentListPage />} /> {/* 사고 내역 조회 */}
+                <Route path="/accidents/details/:accidentId" element={<AccidentDetailsPage />} /> {/* 사고 상세 조회 */}
             </Routes>
         </BrowserRouter>
     );

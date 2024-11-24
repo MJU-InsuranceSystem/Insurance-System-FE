@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import { useNavigate } from 'react-router-dom';
 import Header from '../Header';
 import {
     Container,
@@ -14,7 +14,7 @@ import {
 } from '../styles/HomeStyles';
 
 const Home: React.FC = () => {
-    const navigate = useNavigate(); // useNavigate 초기화
+    const navigate = useNavigate();
 
     return (
         <>
@@ -33,9 +33,15 @@ const Home: React.FC = () => {
                             보험 가입 신청하기
                         </MenuItem>
                         <MenuItem>보험금을 청구하기</MenuItem>
-                        <MenuItem>보험료 납부하기</MenuItem>
-                        <MenuItem>가입 보험 조회하기</MenuItem>
-                        <MenuItem>납부 조회하기</MenuItem>
+                        <MenuItem onClick={() => navigate('/payments/contracts/1')}>
+                            보험료 납부하기
+                        </MenuItem>
+                        <MenuItem onClick={() => navigate('/payment-history/1')}>
+                            납부 내역 조회하기
+                        </MenuItem>
+                        <MenuItem onClick={() => navigate('/accidents/report/1')}>
+                            사고 접수하기
+                        </MenuItem>
                     </MenuItems>
                 </QuickMenu>
                 <ExitButton>종료하기</ExitButton>

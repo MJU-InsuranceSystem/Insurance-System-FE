@@ -226,14 +226,6 @@ const CreateContract: React.FC = () => {
                     <option value="오토바이">오토바이</option>
                     <option value="특수차량">특수차량</option>
                 </select>
-                <Label>모델 연도</Label>
-                <Input
-                    type="text"
-                    name="carRequestDto.modelYear"
-                    value={contractData.carRequestDto.modelYear}
-                    onChange={handleChange}
-                    placeholder="모델 연도를 입력하세요"
-                />
                 <Label>차량 등록 날짜</Label>
                 <Input
                     type="date"
