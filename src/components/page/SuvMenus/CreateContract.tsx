@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { createContract } from "../../../api/createContractApi";
-import { AxiosError } from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import { createContract, ContractRequest } from "../../../api/createContractApi";
 import Header from "../../Header";
 import {
     Container,
@@ -16,6 +15,7 @@ import {
 
 const CreateContract: React.FC = () => {
     const { insuranceId } = useParams<{ insuranceId: string }>();
+    const navigate = useNavigate();
 
     const [contractData, setContractData] = useState({
         contractRequestDto: {
@@ -55,7 +55,6 @@ const CreateContract: React.FC = () => {
                 [key]: value,
             },
         }));
-        console.log("Updated Field:", { [name]: value }); // 디버깅용
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -66,38 +65,26 @@ const CreateContract: React.FC = () => {
             return;
         }
 
-        const formattedData = {
-            ...contractData,
-            contractRequestDto: {
-                ...contractData.contractRequestDto,
-                paymentDate: String(contractData.contractRequestDto.paymentDate),
-            },
-            carRequestDto: {
-                ...contractData.carRequestDto,
-                accidentFreePeriod: String(contractData.carRequestDto.accidentFreePeriod),
-            },
-        };
-
-        console.log("Formatted Data:", JSON.stringify(formattedData, null, 2)); // 디버깅용
-
         try {
             setError(null);
             setSuccess(null);
 
-            // API 호출
-            await createContract(insuranceId, formattedData);
+            console.log("Insurance ID:", insuranceId);
+            console.log("Request Data:", JSON.stringify(contractData, null, 2));
 
-            setSuccess("계약이 성공적으로 생성되었습니다!");
+            const response = await createContract(insuranceId, contractData);
+            setSuccess("계약이 성공적으로 생성되었습니다! 고객 ID: " + response.customerId);
+            navigate("/");
         } catch (error: unknown) {
-            if (error instanceof AxiosError) {
-                console.error("Server Error:", error.response?.data || error.message); // 서버 응답 디버깅
-                setError(error.response?.data?.message || "계약 생성 중 알 수 없는 오류가 발생했습니다.");
+            console.error("Request Failed:", error);
+            if (error instanceof Error) {
+                setError(error.message);
             } else {
-                console.error("Unexpected Error:", error);
                 setError("예기치 않은 오류가 발생했습니다.");
             }
         }
     };
+
 
     return (
         <Container>
@@ -112,7 +99,7 @@ const CreateContract: React.FC = () => {
                     name="contractRequestDto.paymentDate"
                     value={contractData.contractRequestDto.paymentDate}
                     onChange={handleChange}
-                    placeholder="결제일을 입력하세요."
+                    placeholder="결제일을 입력하세요 (숫자)"
                 />
                 <Label>결제 방식</Label>
                 <select
@@ -121,8 +108,8 @@ const CreateContract: React.FC = () => {
                     onChange={handleChange}
                 >
                     <option value="">선택</option>
-                    <option value="AUTO_PAYMENT">자동이체</option>
-                    <option value="DIRECT_PAYMENT">수동</option>
+                    <option value="자동 이체">자동 이체</option>
+                    <option value="수동 이체">수동 이체</option>
                 </select>
                 <Label>결제 계좌</Label>
                 <Input
@@ -130,7 +117,7 @@ const CreateContract: React.FC = () => {
                     name="contractRequestDto.paymentAccount"
                     value={contractData.contractRequestDto.paymentAccount}
                     onChange={handleChange}
-                    placeholder="결제 계좌를 입력하세요."
+                    placeholder="계좌 번호를 입력하세요"
                 />
                 <Label>은행</Label>
                 <select
@@ -139,8 +126,8 @@ const CreateContract: React.FC = () => {
                     onChange={handleChange}
                 >
                     <option value="">선택</option>
-                    <option value="KB">국민은행</option>
-                    <option value="IBK">기업은행</option>
+                    <option value="국민은행">국민은행</option>
+                    <option value="기업은행">기업은행</option>
                 </select>
                 <Label>계약 시작 날짜</Label>
                 <Input
@@ -162,7 +149,6 @@ const CreateContract: React.FC = () => {
                     name="driverLicenseRequestDto.licenseNumber"
                     value={contractData.driverLicenseRequestDto.licenseNumber}
                     onChange={handleChange}
-                    placeholder="운전면허 번호를 입력하세요."
                 />
                 <Label>운전면허 유형</Label>
                 <select
@@ -171,9 +157,9 @@ const CreateContract: React.FC = () => {
                     onChange={handleChange}
                 >
                     <option value="">선택</option>
-                    <option value="CLASS1">1종 보통</option>
-                    <option value="CLASS2">2종 보통</option>
-                    <option value="FCHVDL">1종 대형</option>
+                    <option value="1종 보통">1종 보통</option>
+                    <option value="2종 보통">2종 보통</option>
+                    <option value="1종 대형">1종 대형</option>
                 </select>
                 <Label>운전면허 발급일</Label>
                 <Input
@@ -195,7 +181,6 @@ const CreateContract: React.FC = () => {
                     name="carRequestDto.carNumber"
                     value={contractData.carRequestDto.carNumber}
                     onChange={handleChange}
-                    placeholder="차량 번호를 입력하세요."
                 />
                 <Label>차량 유형</Label>
                 <select
@@ -204,20 +189,13 @@ const CreateContract: React.FC = () => {
                     onChange={handleChange}
                 >
                     <option value="">선택</option>
-                    <option value="PASSENGER_CAR">승용차</option>
+                    <option value="승용차">승용차</option>
                     <option value="SUV">SUV</option>
-                    <option value="TRUCK">트럭</option>
-                    <option value="VAN">밴</option>
-                    <option value="RV">오토바이</option>
-                    <option value="SPECIAL_VEHICLE">특수차량</option>
+                    <option value="트럭">트럭</option>
+                    <option value="밴">밴</option>
+                    <option value="오토바이">오토바이</option>
+                    <option value="특수차량">특수차량</option>
                 </select>
-                <Label>차량 모델 연도</Label>
-                <Input
-                    type="date"
-                    name="carRequestDto.modelYear"
-                    value={contractData.carRequestDto.modelYear}
-                    onChange={handleChange}
-                />
                 <Label>차량 등록 날짜</Label>
                 <Input
                     type="date"
@@ -225,16 +203,16 @@ const CreateContract: React.FC = () => {
                     value={contractData.carRequestDto.registrationDate}
                     onChange={handleChange}
                 />
-                <Label>차량 소유 상태</Label>
+                <Label>소유 상태</Label>
                 <select
                     name="carRequestDto.ownershipStatus"
                     value={contractData.carRequestDto.ownershipStatus}
                     onChange={handleChange}
                 >
                     <option value="">선택</option>
-                    <option value="OWN">소유</option>
-                    <option value="LEASE">리스</option>
-                    <option value="RENTAL">렌탈</option>
+                    <option value="자기 소유">자기 소유</option>
+                    <option value="리스">리스</option>
+                    <option value="렌트">렌트</option>
                 </select>
                 <Label>무사고 기간 (개월)</Label>
                 <Input
@@ -242,7 +220,6 @@ const CreateContract: React.FC = () => {
                     name="carRequestDto.accidentFreePeriod"
                     value={contractData.carRequestDto.accidentFreePeriod}
                     onChange={handleChange}
-                    placeholder="무사고 기간을 입력하세요."
                 />
                 <Button type="submit">계약 생성</Button>
             </Form>

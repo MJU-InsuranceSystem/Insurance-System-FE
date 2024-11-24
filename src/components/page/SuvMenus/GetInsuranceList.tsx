@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // React Router 사용
+import { useNavigate } from 'react-router-dom';
 import { getInsuranceList, Insurance } from '../../../api/getInsuranceListApi';
 import Header from '../../Header';
 import {
@@ -11,15 +11,15 @@ import {
     InsuranceDetails,
     ErrorText,
     LoadingSpinner,
-    DetailButton, // 스타일 추가
+    DetailButton,
 } from '../../styles/InsuranceListStyles';
 
 const InsuranceList: React.FC = () => {
-    const [insuranceList, setInsuranceList] = useState<Insurance[]>([]); // 초기 상태를 빈 배열로 설정
+    const [insuranceList, setInsuranceList] = useState<Insurance[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const navigate = useNavigate(); // 페이지 이동을 위한 훅
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchInsuranceList = async () => {
@@ -28,9 +28,10 @@ const InsuranceList: React.FC = () => {
 
             try {
                 const data = await getInsuranceList();
+                console.log('받아온 보험 상품 리스트:', data);
                 setInsuranceList(data);
             } catch (err) {
-                console.error('Error fetching insurance list:', err);  // Log the error
+                console.error('보험 상품 데이터를 가져오는 중 오류:', err);
                 setError('보험 상품 데이터를 가져오는 데 실패했습니다.');
             } finally {
                 setLoading(false);
@@ -63,7 +64,7 @@ const InsuranceList: React.FC = () => {
             <Header />
             <Title>보험 상품 목록</Title>
             <InsuranceListContainer>
-                {Array.isArray(insuranceList) ? (
+                {insuranceList.length > 0 ? (
                     insuranceList.map((insurance) => (
                         <InsuranceItem key={insurance.id}>
                             <InsuranceName>{insurance.name}</InsuranceName>
@@ -76,16 +77,13 @@ const InsuranceList: React.FC = () => {
                                     가입 가능 연령: {insurance.eligibleAgeMin} ~ {insurance.eligibleAgeMax}세
                                 </p>
                             </InsuranceDetails>
-                            {/* 상세조회 버튼 추가 */}
-                            <DetailButton
-                                onClick={() => navigate(`/insurance/${insurance.id}`)}
-                            >
+                            <DetailButton onClick={() => navigate(`/insurance/${insurance.id}`)}>
                                 상세조회
                             </DetailButton>
                         </InsuranceItem>
                     ))
                 ) : (
-                    <ErrorText>보험 상품 데이터가 유효하지 않습니다.</ErrorText>
+                    <ErrorText>보험 상품 데이터가 없습니다.</ErrorText>
                 )}
             </InsuranceListContainer>
         </Container>

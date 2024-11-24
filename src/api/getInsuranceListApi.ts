@@ -17,12 +17,10 @@ export const getInsuranceList = async (): Promise<Insurance[]> => {
         const response = await axiosInstance.get('/api/insurances');
         console.log('API 응답 데이터:', response.data);
 
-        // 데이터 구조가 배열인지 확인
-        if (Array.isArray(response.data)) {
-            return response.data;
-        } else if (response.data && Array.isArray(response.data.data)) {
+        if (response.data && Array.isArray(response.data.data)) {
             return response.data.data;
         } else {
+            console.error('예상치 못한 응답 데이터 구조:', response.data);
             throw new Error('유효하지 않은 응답 데이터 구조');
         }
     } catch (error) {

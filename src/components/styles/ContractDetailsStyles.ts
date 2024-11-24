@@ -9,26 +9,16 @@ export const Title = styled.h1`
     margin-bottom: 20px;
 `;
 
-export const ContractList = styled.ul`
-    list-style-type: none;
-    padding: 0;
-`;
-
-export const ContractItem = styled.li`
+export const DetailsSection = styled.div`
     border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-        background-color: #f9f9f9;
-    }
+    margin-bottom: 20px;
 `;
 
-export const ContractDetails = styled.div`
+export const DetailsItem = styled.p`
+    margin: 5px 0;
     font-size: 14px;
-    line-height: 1.5;
 `;
 
 export const ErrorText = styled.p`

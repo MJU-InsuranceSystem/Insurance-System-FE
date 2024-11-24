@@ -4,24 +4,24 @@ import { AxiosError } from 'axios';
 export interface ContractRequest {
     contractRequestDto: {
         paymentDate: string;
-        paymentMethod: string;
+        paymentMethod: string; // 문자열로 전달
         paymentAccount: string;
-        bank: string;
+        bank: string; // 문자열로 전달
         startDate: string;
         endDate: string;
     };
     driverLicenseRequestDto: {
         licenseNumber: string;
-        licenseType: string;
+        licenseType: string; // 문자열로 전달
         issueDate: string;
         validityPeriod: string;
     };
     carRequestDto: {
         carNumber: string;
-        carType: string;
+        carType: string; // 문자열로 전달
         modelYear: string;
         registrationDate: string;
-        ownershipStatus: string;
+        ownershipStatus: string; // 문자열로 전달
         accidentFreePeriod: string;
     };
 }
@@ -29,22 +29,37 @@ export interface ContractRequest {
 export const createContract = async (
     insuranceId: string,
     contractData: ContractRequest
-): Promise<void> => {
+): Promise<{ customerId: string }> => {
     try {
+        console.log("=== Request Debugging ===");
+        console.log("Full URL:", `/api/contracts/car/${insuranceId}`);
+        console.log("Headers:", {
+            Authorization: axiosInstance.defaults.headers.common["Authorization"],
+            "Content-Type": axiosInstance.defaults.headers["Content-Type"],
+        });
+        console.log("Body:", JSON.stringify(contractData, null, 2));
+
         const response = await axiosInstance.post(
             `/api/contracts/car/${insuranceId}`,
             contractData
         );
-        console.log('계약 생성 성공:', response.data);
+        console.log("계약 생성 성공:", response.data);
+        return { customerId: response.data.customerId };
     } catch (error) {
-        console.error('계약 생성 중 오류 발생:', error);
+        console.error("=== Response Error ===");
 
         if (error instanceof AxiosError) {
-            const errorMessage =
-                error.response?.data?.message || '계약 생성에 실패했습니다.';
-            throw new Error(errorMessage);
+            console.error("Status Code:", error.response?.status || "N/A");
+            console.error("Status Text:", error.response?.statusText || "N/A");
+            console.error("Response Headers:", error.response?.headers || "N/A");
+            console.error("Response Body:", error.response?.data || "N/A");
+
+            throw new Error(
+                error.response?.data?.message || "계약 생성에 실패했습니다."
+            );
         }
 
-        throw new Error('알 수 없는 오류가 발생했습니다.');
+        console.error("Unexpected Error:", error);
+        throw new Error("알 수 없는 오류가 발생했습니다.");
     }
 };

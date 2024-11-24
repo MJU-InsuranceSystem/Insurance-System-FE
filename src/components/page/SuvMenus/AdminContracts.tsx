@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getSubscriberContracts, Contract } from "../../api/getSubscriberContractsApi";
+import { getAllContracts, Contract } from "../../../api/getAllContractsApi";
+import Header from "../../../components/Header";
 import {
     Container,
     Title,
     ContractList,
     ContractItem,
     ContractDetails,
-    ErrorText,
     LoadingSpinner,
-} from "../styles/MyPageStyles";
-import Header from "../../components/Header";
+    ErrorText,
+} from "../../styles/AdminContractsStyles";
 
-const MyPage: React.FC = () => {
+const AdminContracts: React.FC = () => {
     const [contracts, setContracts] = useState<Contract[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -24,7 +24,7 @@ const MyPage: React.FC = () => {
             setError(null);
 
             try {
-                const data = await getSubscriberContracts();
+                const data = await getAllContracts();
                 setContracts(data);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "데이터를 가져오는 중 오류가 발생했습니다.");
@@ -36,7 +36,7 @@ const MyPage: React.FC = () => {
         fetchContracts();
     }, []);
 
-    const handleDoubleClick = (contractId: number) => {
+    const handleViewDetails = (contractId: number) => {
         navigate(`/contracts/details/${contractId}`);
     };
 
@@ -61,18 +61,19 @@ const MyPage: React.FC = () => {
     return (
         <Container>
             <Header />
-            <Title>고객 계약 내역</Title>
+            <Title>계약 전체 내역</Title>
             <ContractList>
                 {contracts.length > 0 ? (
                     contracts.map((contract) => (
                         <ContractItem
                             key={contract.contractId}
-                            onDoubleClick={() => handleDoubleClick(contract.contractId)}
+                            onClick={() => handleViewDetails(contract.contractId)}
                         >
                             <ContractDetails>
+                                <p>계약 ID: {contract.contractId}</p>
                                 <p>승인 상태: {contract.approveStatus}</p>
-                                <p>결제 날짜: {contract.contractInformation.paymentDate}일</p>
                                 <p>결제 방식: {contract.contractInformation.paymentMethod}</p>
+                                <p>계약 기간: {contract.contractInformation.startDate} ~ {contract.contractInformation.endDate}</p>
                             </ContractDetails>
                         </ContractItem>
                     ))
@@ -84,4 +85,4 @@ const MyPage: React.FC = () => {
     );
 };
 
-export default MyPage;
+export default AdminContracts;
