@@ -14,7 +14,7 @@ export const updateLiabilityStatus = async (
         console.log("면책/부책 상태 업데이트 요청 데이터:", { accidentId, body });
 
         const response = await axiosInstance.patch(
-            `/api/accident/${accidentId}/liability`,
+            `/api/accidents/${accidentId}/liability`,
             body,
             {
                 headers: {

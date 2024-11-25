@@ -15,7 +15,7 @@ import {
 
 const CompensationTeam_Claim: React.FC = () => {
     const { accidentId } = useParams<{ accidentId: string }>(); // URL에서 사건 ID를 동적으로 가져옴
-    const [liabilityStatus, setLiabilityStatus] = useState<"EXEMPT" | "LIABILITY">("EXEMPT");
+    const [liabilityStatus, setLiabilityStatus] = useState<"면책" | "부책">("면책");
     const [comments, setComments] = useState<string>("");
     const [paymentAmount, setPaymentAmount] = useState<string>("");
     const [error, setError] = useState<string | null>(null);
@@ -90,9 +90,9 @@ const CompensationTeam_Claim: React.FC = () => {
             <LiabilityForm onSubmit={handleLiabilitySubmit}>
                 <label>
                     면책/부책:
-                    <select value={liabilityStatus} onChange={(e) => setLiabilityStatus(e.target.value as "EXEMPT" | "LIABILITY")}>
-                        <option value="EXEMPT">면책</option>
-                        <option value="LIABILITY">부책</option>
+                    <select value={liabilityStatus} onChange={(e) => setLiabilityStatus(e.target.value as "면책" | "부책")}>
+                        <option value="면책">면책</option>
+                        <option value="부책">부책</option>
                     </select>
                 </label>
                 <Input

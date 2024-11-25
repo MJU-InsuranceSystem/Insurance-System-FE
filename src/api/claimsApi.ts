@@ -1,6 +1,6 @@
 //아마 이 api 응용할 수 있을 것 같은데 해당 페이지에서는 작동이 안돼...
 export interface LiabilityRequest {
-    liabilityStatus: "EXEMPT" | "LIABILITY"; // 면책 또는 부책
+    liabilityStatus: "면책" | "부책"; // 면책 또는 부책
     comments: string;
 }
 
@@ -16,7 +16,7 @@ export interface ClaimRequest {
  * @returns Promise<void>
  */
 export const updateLiabilityStatus = async (accidentId: string, requestBody: LiabilityRequest): Promise<void> => {
-    const response = await fetch(`http://localhost:8080/api/accident/${accidentId}/liability`, {
+    const response = await fetch(`http://localhost:8080/api/accidents/${accidentId}/liability`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",

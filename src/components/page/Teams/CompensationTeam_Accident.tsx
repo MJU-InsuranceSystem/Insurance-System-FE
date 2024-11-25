@@ -59,7 +59,7 @@ const CompensationTeam_Accident: React.FC = () => {
                 )
             );
 
-            alert(`사건 ${accidentId}의 면책/부책 상태가 "${status === "EXEMPT" ? "면책" : "부책"}"으로 업데이트되었습니다.`);
+            alert(`사건 ${accidentId}의 면책/부책 상태가 "${status === "면책" ? "면책" : "부책"}"으로 업데이트되었습니다.`);
         } catch (error) {
             if (error instanceof Error) {
                 alert(`오류: ${error.message}`); // 사용자에게 한글 메시지로 표시
@@ -114,10 +114,10 @@ const CompensationTeam_Accident: React.FC = () => {
                                 <b>사고 날짜:</b> {new Date(accident.accidentDate).toLocaleString()}
                             </p>
                         </AccidentDetails>
-                        <Button onClick={() => handleLiabilityUpdate(accident.id, "EXEMPT")}>
+                        <Button onClick={() => handleLiabilityUpdate(accident.id, "면책")}>
                             면책으로 판단하기
                         </Button>
-                        <Button onClick={() => handleLiabilityUpdate(accident.id, "LIABILITY")}>
+                        <Button onClick={() => handleLiabilityUpdate(accident.id, "부책")}>
                             부책으로 판단하기
                         </Button>
                         <Button onClick={() => handleClaimPayment(accident.id)}>보험금 지급하기</Button>
