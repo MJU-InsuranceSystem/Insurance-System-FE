@@ -1,5 +1,3 @@
-// CompensationTeam_Claim.tsx
-
 import React, { useEffect, useState } from 'react';
 import { fetchAllClaims, Claim } from '../../../api/viewpayClaimAllApi';
 import Header from '../../Header';

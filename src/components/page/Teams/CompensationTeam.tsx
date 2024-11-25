@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from '../../Header'; // 헤더 임포트
+import Header from '../../Header';
 import {
     Container,
     Title,
