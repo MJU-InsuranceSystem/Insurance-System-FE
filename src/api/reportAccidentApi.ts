@@ -21,19 +21,33 @@ export const reportAccident = async (
     formData.append("accidentDate", accidentData.accidentDate);
     formData.append("description", accidentData.description);
     formData.append("location", accidentData.location);
-    formData.append("damageAmount", accidentData.damageAmount.toString());
+    formData.append("damageAmount", accidentData.damageAmount.toFixed(2));
     formData.append("accidentType", accidentData.accidentType);
     if (accidentData.file) {
         formData.append("file", accidentData.file);
     }
 
     try {
-        await axiosInstance.post(`/api/accidents/contracts/${contractId}`, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        });
-    } catch (error) {
-        throw new Error("사고 접수에 실패했습니다. 다시 시도해주세요.");
+        const response = await axiosInstance.post(
+            `/api/accidents/contracts/${contractId}`,
+            formData,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            }
+        );
+
+        if (response.status !== 200) {
+            throw new Error(response.data.message || "사고 접수에 실패했습니다.");
+        }
+    } catch (err: unknown) {
+        if (err instanceof Error) {
+            console.error("사고 접수 중 오류 발생:", err.message);
+            throw new Error(err.message);
+        } else {
+            console.error("알 수 없는 오류 발생");
+            throw new Error("사고 접수에 실패했습니다. 다시 시도해주세요.");
+        }
     }
 };

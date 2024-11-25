@@ -17,7 +17,7 @@ import {
 } from "../../styles/AccidentReportStyles";
 
 const AccidentReportPage: React.FC = () => {
-    const { contractId } = useParams<{ contractId: string }>();
+    const { contractId } = useParams<{ contractId: string }>(); // URL에서 contractId 가져오기
     const navigate = useNavigate();
     const [accidentData, setAccidentData] = useState<AccidentReportRequest>({
         title: "",
