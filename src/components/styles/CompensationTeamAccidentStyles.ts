@@ -78,6 +78,7 @@ export const Button = styled.button`
     margin: 5px 0;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 100%; /* 버튼 가로폭을 100%로 설정 */
 
     &:hover {
         background-color: #0a3d7a;
