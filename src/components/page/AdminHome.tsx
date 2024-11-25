@@ -40,7 +40,6 @@ const AdminHome: React.FC = () => {
                         <MenuItem onClick={() => navigate('/admin/contracts')}>계약 관리 팀</MenuItem>
                         <MenuItem onClick={() => navigate('/customerTeam')}>고객 관리 팀</MenuItem>
                         <MenuItem onClick={() => navigate('/employeeTeam')}>직원 관리 팀</MenuItem>
-                        <MenuItem onClick={() => navigate('/accidentManagementTeam')}>사건 관리 팀</MenuItem> {/* 경로 수정 */}
                     </MenuItems>
                 </QuickMenu>
                 <ExitButton onClick={() => navigate('/')}>종료하기</ExitButton>

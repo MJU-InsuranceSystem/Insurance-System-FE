@@ -1,22 +1,17 @@
 import styled from 'styled-components';
 
-// 기본 컨테이너 스타일
+// 전체 컨테이너
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    min-height: 100vh;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
 `;
 
 // 타이틀 스타일
 export const Title = styled.h1`
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
+    color: #000000;
+    font-size: 26px;
+    margin: 0;
 `;
 
 // 설명 텍스트 스타일
@@ -33,7 +28,7 @@ export const AccidentList = styled.div`
     flex-direction: column;
     width: 100%;
     max-width: 600px;
-    margin: 20px 0;
+    margin: 20px auto;  // 수평 중앙 정렬
 `;
 
 // 사고 항목 스타일

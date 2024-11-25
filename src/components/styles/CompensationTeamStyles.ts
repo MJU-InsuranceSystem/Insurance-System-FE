@@ -1,5 +1,20 @@
 import styled from 'styled-components';
 
+
+// 전체 컨테이너
+export const Container = styled.div`
+    background-color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+`;
+
+// 타이틀 스타일
+export const Title = styled.h1`
+    color: #000000;
+    font-size: 26px;
+    margin: 0;
+`;
+
 export const ButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -64,21 +79,6 @@ export const SuccessMessage = styled.p`
 export const LoadingSpinner = styled.div`
     font-size: 20px;
     color: #007bff;
-`;
-
-export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    min-height: 100vh;
-`;
-
-export const Title = styled.h1`
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #1058a3;
 `;
 
 export const Form = styled.form`

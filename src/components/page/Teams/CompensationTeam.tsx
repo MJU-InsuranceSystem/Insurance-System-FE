@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Header from '../../Header'; // 헤더 임포트
 import {
     Container,
     Title,
@@ -10,6 +11,7 @@ import {
 const CompensationTeam: React.FC = () => {
     return (
         <Container>
+            <Header />  {/* 헤더 추가 */}
             <Title>보상 지원 팀</Title>
             <ButtonContainer>
                 <Link to="/compensation-team/accidents">
