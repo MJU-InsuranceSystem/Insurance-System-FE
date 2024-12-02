@@ -56,6 +56,14 @@ const ContractDetailsPage: React.FC = () => {
         navigate(`/payment-history/${contractId}`); // 납부 내역 조회 페이지로 이동
     };
 
+    const handlePaymentSubmit = () => {
+        if (!contractId) {
+            setError("유효하지 않은 납부 ID입니다.");
+            return;
+        }
+        navigate(`/payment-submission/${contractId}`); // 납부 하기 페이지로 이동
+    };
+
     if (loading) {
         return (
             <Container>
@@ -103,7 +111,7 @@ const ContractDetailsPage: React.FC = () => {
                     <DetailsItem>무사고 기간: {details.carInformation.accidentFreePeriod}개월</DetailsItem>
                 </DetailsSection>
             )}
-            
+            <Button onClick={handlePaymentSubmit}>납부 하기</Button> {/* 납부 하기 페이지로 이동 */}
             <Button onClick={handlePaymentHistoryClick}>납부 확인 조회하기</Button> {/* 납부 내역 조회 페이지로 이동 */}
         </Container>
     );
