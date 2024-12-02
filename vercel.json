@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://api.mju-insurance.xyz/api/:path*"
+      "destination": "https://3.39.206.214/api/:path*"
     }
   ]
 }

@@ -33,25 +33,25 @@ const Login: React.FC = () => {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-
+    
         if (!isFormValid()) {
             console.log('폼 유효하지 않음');
             return;
         }
-
+    
         try {
             const response = await loginUser(email, password);
-
+    
             if (response.httpStatusCode === 200 && response.responseCode === 'SUCCESS') {
                 setLoginError(null);
-
-                // 로그인 후 액세스 토큰을 로컬스토리지에 저장
                 const accessToken = response.data?.accessToken;
+    
+                // 로그인 성공 시 이메일을 로컬스토리지에 저장
                 if (accessToken) {
-                    localStorage.setItem('accessToken', accessToken);  // 로컬스토리지에 저장
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('userEmail', email); // 이메일 저장
                 }
-
-                // 이메일에 "admin"이 포함된 경우 AdminHome으로 이동
+    
                 if (email.toLowerCase().includes('admin')) {
                     navigate('/adminHome');
                 } else {
@@ -65,6 +65,7 @@ const Login: React.FC = () => {
             setLoginError(error instanceof Error ? error.message : '로그인에 실패했습니다. 다시 시도해 주세요.');
         }
     };
+    
 
     const isFormValid = () => {
         return email.trim() !== '' && password.trim() !== '' && emailError === null;

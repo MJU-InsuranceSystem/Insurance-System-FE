@@ -18,6 +18,7 @@ export const ImageWrapper = styled.div`
 
 export const AuthButtons = styled.div`
     display: flex;
+    align-items: center; /* 추가: 버튼과 이메일을 수직 정렬 */
     gap: 10px;
 
     button {
@@ -31,5 +32,10 @@ export const AuthButtons = styled.div`
         &:hover {
             background-color: #777;
         }
+    }
+
+    span {
+        color: #1058A3; /* 이메일 색상 추가 */
+        font-weight: bold; /* 이메일 강조를 위한 굵게 설정 */
     }
 `;

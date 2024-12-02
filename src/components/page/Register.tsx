@@ -103,7 +103,7 @@ const Register: React.FC = () => {
     const handleSignUp = async (event: React.FormEvent) => {
         event.preventDefault();
         if (!isFormValid()) return;
-
+    
         const userData: RegisterData = {
             name,
             email,
@@ -115,12 +115,12 @@ const Register: React.FC = () => {
             birthDay: birthday,
             userType,
         };
-
+    
         if (userType === 'WORKER') {
             userData.hireYear = Number(hireYear);
             userData.role = role;
         }
-
+    
         try {
             await registerUser(userData);
             alert('회원가입이 완료되었습니다!');
@@ -129,7 +129,7 @@ const Register: React.FC = () => {
             console.error(error);
             alert('회원가입에 실패했습니다. 다시 시도해 주세요.');
         }
-    };
+    };    
 
     return (
         <>
