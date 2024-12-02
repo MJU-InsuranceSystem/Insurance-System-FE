@@ -33,7 +33,8 @@ export const LoadingSpinner = styled.div`
 `;
 
 export const Button = styled.button`
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;

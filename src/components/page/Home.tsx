@@ -34,7 +34,7 @@ const Home: React.FC = () => {
                         </MenuItem>
                         <MenuItem>보험금을 청구하기</MenuItem>
                         <MenuItem onClick={() => navigate('/payments/contracts/1')}>
-                            보험료 납부하기
+                            계좌 정보 등록하기
                         </MenuItem>
                         <MenuItem onClick={() => navigate('/payment-history/1')}>
                             납부 내역 조회하기

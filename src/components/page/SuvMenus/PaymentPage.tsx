@@ -24,9 +24,6 @@ const PaymentPage: React.FC = () => {
                 <Button onClick={() => handleNavigate(`/accounts/${contractId}`)}>
                     계좌정보 입력하기
                 </Button>
-                <Button onClick={() => handleNavigate(`/payment-submission/${contractId}`)}>
-                    납부하기
-                </Button>
             </ButtonGroup>
         </Container>
     );
