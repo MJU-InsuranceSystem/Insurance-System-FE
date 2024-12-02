@@ -37,7 +37,7 @@ const MyPage: React.FC = () => {
     }, []);
 
     const handleDoubleClick = (contractId: number) => {
-        navigate(`/contracts/details/${contractId}`);
+        navigate(`/contracts/details/client/${contractId}`); // 수정된 경로
     };
 
     if (loading) {

@@ -23,6 +23,7 @@ import InsuranceDetail from "../page/SuvMenus/InsuranceDetail";
 import CreateContract from "../page/SuvMenus/CreateContract";
 import MyPage from "../page/MyPage";
 import ContractDetailsPage from "../page/SuvMenus/ContractDetails";
+import ContractDetailsClientPage from "../page/SuvMenus/ContractDetailsClientPage"; // 추가된 임포트
 import AdminContracts from "../page/SuvMenus/AdminContracts";
 import ContractReviewPage from "../page/SuvMenus/ContractReviewPage";
 import PaymentPage from "../page/SuvMenus/PaymentPage";
@@ -62,6 +63,7 @@ const Router: React.FC = () => {
                 <Route path="/createContract/:insuranceId" element={<CreateContract />} />
                 <Route path="/myPage/:subscriberId" element={<MyPage />} />
                 <Route path="/contracts/details/:contractId" element={<ContractDetailsPage />} />
+                <Route path="/contracts/details/client/:contractId" element={<ContractDetailsClientPage />} /> {/* 수정된 라우트 */}
                 <Route path="/admin/contracts" element={<AdminContracts />} />
                 <Route path="/contract-review/:contractId" element={<ContractReviewPage />} />
                 <Route path="/payments/contracts/:contractId" element={<PaymentPage />} />
