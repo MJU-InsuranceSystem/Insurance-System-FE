@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postAccountInfo } from "../../../api/accountApi";
+import Header from "../../../components/Header"; // 헤더 추가
 import {
     Container,
     Title,
@@ -62,6 +63,7 @@ const AccountInfoPage: React.FC = () => {
 
     return (
         <Container>
+            <Header /> {/* Header 추가 */}
             <Title>계좌정보 입력하기</Title>
             {error && <ErrorText>{error}</ErrorText>}
             {success && <SuccessMessage>{success}</SuccessMessage>}
