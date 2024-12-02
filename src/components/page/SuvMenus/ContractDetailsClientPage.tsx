@@ -111,7 +111,7 @@ const ContractDetailsPage: React.FC = () => {
                     <DetailsItem>무사고 기간: {details.carInformation.accidentFreePeriod}개월</DetailsItem>
                 </DetailsSection>
             )}
-            <Button onClick={handlePaymentSubmit}>납부 하기</Button> {/* 납부 하기 페이지로 이동 */}
+            <Button onClick={handlePaymentSubmit}>보험료 납부 하기</Button> {/* 납부 하기 페이지로 이동 */}
             <Button onClick={handlePaymentHistoryClick}>납부 확인 조회하기</Button> {/* 납부 내역 조회 페이지로 이동 */}
         </Container>
     );
