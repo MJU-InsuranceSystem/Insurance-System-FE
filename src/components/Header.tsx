@@ -36,6 +36,9 @@ const Header: React.FC = () => {
                 {isLoggedIn ? (
                     <>
                         <span>{userEmail}</span>
+                        <Link to="/myPage/:subscriberId">
+                            <button>마이페이지</button>
+                        </Link>
                         <button onClick={handleLogout}>로그아웃</button>
                     </>
                 ) : (
