@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { submitPayment } from "../../../api/paymentApi";
+import { getAllContracts, Contract } from "../../../api/getAllContractsApi"; // 추가된 import
 import Header from "../../../components/Header";
 import {
     Container,
@@ -15,12 +16,31 @@ import {
 
 const PaymentSubmissionPage: React.FC = () => {
     const { contractId } = useParams<{ contractId: string }>();
-
+    const [contract, setContract] = useState<Contract | null>(null);
     const [amount, setAmount] = useState<number | "">("");
     const [paymentDate, setPaymentDate] = useState<string>("");
     const [dueDate, setDueDate] = useState<string>("");
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchContract = async () => {
+            try {
+                const contracts = await getAllContracts();
+                const foundContract = contracts.find(c => c.contractId.toString() === contractId);
+                
+                if (foundContract) {
+                    setContract(foundContract);
+                } else {
+                    setError("계약 ID에 해당하는 계약을 찾을 수 없습니다.");
+                }
+            } catch (err) {
+                setError(err instanceof Error ? err.message : "계약 정보를 가져오는 중 오류가 발생했습니다.");
+            }
+        };
+
+        fetchContract();
+    }, [contractId]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -69,7 +89,7 @@ const PaymentSubmissionPage: React.FC = () => {
     return (
         <Container>
             <Header />
-            <Title>보험금 납부하기</Title>
+            <Title>{contract ? `계약 ID ${contract.contractId} 보험금 납부하기` : "보험금 납부하기"}</Title>
             {error && <ErrorText>{error}</ErrorText>}
             {success && <SuccessMessage>{success}</SuccessMessage>}
             <Form onSubmit={handleSubmit}>
