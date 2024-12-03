@@ -30,6 +30,7 @@ export interface ContractDetails {
     contractInformation: ContractInformation; // 계약 정보
     license: LicenseInformation; // 면허 정보
     carInformation: CarInformation; // 차량 정보
+    insuranceName: string; // 보험 이름 추가
 }
 
 export const getContractDetails = async (contractId: number): Promise<ContractDetails> => {

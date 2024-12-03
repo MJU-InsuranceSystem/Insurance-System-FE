@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getSubscriberContracts, Contract } from "../../api/getSubscriberContractsApi";
+import { getSubscriberContracts, Contract } from "../../api/getSubscriberContractsApi"; // 수정된 API 사용
 import {
     Container,
     Title,
@@ -38,7 +38,7 @@ const MyPage: React.FC = () => {
     }, []);
 
     const handleDoubleClick = (contractId: number) => {
-        navigate(`/contracts/details/client/${contractId}`); // 고객일 때 고객 전용 계약 상세 정보로 이동하게
+        navigate(`/contracts/details/client/${contractId}`); // 고객 전용 계약 상세 정보로 이동
     };
 
     if (loading) {
@@ -71,6 +71,12 @@ const MyPage: React.FC = () => {
                             onDoubleClick={() => handleDoubleClick(contract.contractId)}
                         >
                             <ContractDetails>
+                                <p>
+                                    보험 이름: 
+                                    <span style={{ marginLeft: '8px', fontWeight: 'bold' }}>
+                                        {contract.insuranceName || '정보 없음'} {/* 보험 제목 출력 */}
+                                    </span>
+                                </p>
                                 <p>
                                     승인 상태: 
                                     <span style={{ marginLeft: '8px', fontWeight: 'bold' }}>

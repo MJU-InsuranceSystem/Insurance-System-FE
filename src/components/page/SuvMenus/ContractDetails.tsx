@@ -95,6 +95,7 @@ const ContractDetailsPage: React.FC = () => {
             <Title>계약 상세 정보</Title>
             {details && (
                 <DetailsSection>
+                    <h3>보험 이름: {details.insuranceName}</h3> {/* 보험 이름 추가 */}
                     <h3>계약 정보</h3>
                     <DetailsItem>결제 날짜: {details.contractInformation.paymentDate}</DetailsItem>
                     <DetailsItem>결제 방식: {details.contractInformation.paymentMethod}</DetailsItem>

@@ -13,6 +13,7 @@ export interface Contract {
     contractId: number; // 계약 ID
     approveStatus: string; // 승인 상태
     contractInformation: ContractInformation; // 계약 정보
+    insuranceName: string; // 보험 이름 추가
 }
 
 export const getSubscriberContracts = async (): Promise<Contract[]> => {

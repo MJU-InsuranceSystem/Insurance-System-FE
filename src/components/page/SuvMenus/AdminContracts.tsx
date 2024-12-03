@@ -71,7 +71,7 @@ const AdminContracts: React.FC = () => {
                             onClick={() => handleViewDetails(contract.contractId)}
                         >
                             <ContractDetails>
-                                <p>계약 ID: {contract.contractId}</p>
+                                <p>보험 이름: {contract.insuranceName}</p> {/* 보험 이름 추가 */}
                                 <p style={{ display: 'flex', alignItems: 'center' }}>
                                     승인 상태: 
                                     <span style={{ marginLeft: '8px', fontWeight: 'bold' }}>
