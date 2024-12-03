@@ -9,6 +9,7 @@ import {
     ContractDetails,
     ErrorText,
     LoadingSpinner,
+    StatusText,
 } from "../styles/MyPageStyles";
 import Header from "../../components/Header";
 
@@ -37,7 +38,7 @@ const MyPage: React.FC = () => {
     }, []);
 
     const handleDoubleClick = (contractId: number) => {
-        navigate(`/contracts/details/client/${contractId}`); // 수정된 경로
+        navigate(`/contracts/details/client/${contractId}`); // 고객일 때 고객 전용 계약 상세 정보로 이동하게
     };
 
     if (loading) {
@@ -70,7 +71,14 @@ const MyPage: React.FC = () => {
                             onDoubleClick={() => handleDoubleClick(contract.contractId)}
                         >
                             <ContractDetails>
-                                <p>승인 상태: {contract.approveStatus}</p>
+                                <p>
+                                    승인 상태: 
+                                    <span style={{ marginLeft: '8px', fontWeight: 'bold' }}>
+                                        <StatusText approveStatus={contract.approveStatus}>
+                                            {contract.approveStatus}
+                                        </StatusText>
+                                    </span>
+                                </p>
                                 <p>결제 날짜: {contract.contractInformation.paymentDate}일</p>
                                 <p>결제 방식: {contract.contractInformation.paymentMethod}</p>
                             </ContractDetails>

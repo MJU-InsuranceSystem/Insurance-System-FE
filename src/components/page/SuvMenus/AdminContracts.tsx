@@ -10,6 +10,7 @@ import {
     ContractDetails,
     LoadingSpinner,
     ErrorText,
+    StatusText,
 } from "../../styles/AdminContractsStyles";
 
 const AdminContracts: React.FC = () => {
@@ -71,7 +72,14 @@ const AdminContracts: React.FC = () => {
                         >
                             <ContractDetails>
                                 <p>계약 ID: {contract.contractId}</p>
-                                <p>승인 상태: {contract.approveStatus}</p>
+                                <p style={{ display: 'flex', alignItems: 'center' }}>
+                                    승인 상태: 
+                                    <span style={{ marginLeft: '8px', fontWeight: 'bold' }}>
+                                        <StatusText approveStatus={contract.approveStatus}>
+                                            {contract.approveStatus}
+                                        </StatusText>
+                                    </span>
+                                </p>
                                 <p>결제 방식: {contract.contractInformation.paymentMethod}</p>
                                 <p>계약 기간: {contract.contractInformation.startDate} ~ {contract.contractInformation.endDate}</p>
                             </ContractDetails>

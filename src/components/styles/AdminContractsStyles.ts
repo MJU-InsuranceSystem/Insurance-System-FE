@@ -41,3 +41,12 @@ export const LoadingSpinner = styled.div`
     font-size: 16px;
     color: #555;
 `;
+
+export const StatusText = styled.span<{ approveStatus: string }>`
+    font-size: 20px; /* 폰트 크기 증가 */
+    color: ${({ approveStatus }) =>
+        approveStatus === "승인" ? "green" :
+        approveStatus === "거부" ? "red" :
+        approveStatus === "대기" ? "orange" :
+        "black"}; /* 승인 상태에 따라 색상 변경 */
+`;
