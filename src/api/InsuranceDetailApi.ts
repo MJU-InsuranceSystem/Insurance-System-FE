@@ -3,6 +3,7 @@ import { AxiosError } from 'axios';
 
 // Define Insurance Detail type
 export interface InsuranceDetail {
+    data: any;
     name: string;
     description: string;
     eligibleAgeMin: number;
