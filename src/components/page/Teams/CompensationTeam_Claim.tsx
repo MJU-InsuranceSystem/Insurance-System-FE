@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllClaims, Claim } from '../../../api/viewpayClaimAllApi';
-import Header from '../../Header';
+import Header from '../../AdminHeader';
 import {
     Container,
     Title,

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { patchUnderwrite } from "../../../api/underWriteApi";
-import Header from "../../../components/Header";
+import Header from "../../../components/AdminHeader";
 import {
     Container,
     Title,

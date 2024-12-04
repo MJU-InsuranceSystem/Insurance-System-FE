@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllContracts, Contract } from "../../../api/getAllContractsApi";
-import Header from "../../../components/Header";
+import Header from "../../../components/AdminHeader";
 import {
     Container,
     Title,

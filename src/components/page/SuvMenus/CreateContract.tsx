@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { createContract } from "../../../api/createContractApi";
+import { createContract } from "../../../api/createContractApi"; // 기존 서버 API 사용
 import Header from "../../Header";
 import {
     Container,
@@ -9,8 +9,6 @@ import {
     Label,
     Input,
     Button,
-    ErrorText,
-    SuccessMessage,
 } from "../../styles/CreateContractStyles";
 
 interface ContractData {
@@ -67,9 +65,58 @@ const CreateContract: React.FC = () => {
         },
     });
 
-    const [error, setError] = useState<string | null>(null);
-    const [success, setSuccess] = useState<string | null>(null);
+    const [remainingTime, setRemainingTime] = useState<number | null>(null);
+    const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
+    const [alertShown, setAlertShown] = useState<boolean>(false); // 중복 알림 방지
 
+    // 로컬 스토리지에서 데이터 불러오기
+    useEffect(() => {
+        if (!insuranceId) return;
+
+        const savedData = loadFromLocalStorage(`insurance_${insuranceId}`);
+        const savedTimestamp = localStorage.getItem(`insurance_${insuranceId}_timestamp`);
+        const currentTime = Date.now();
+
+        if (savedData && savedTimestamp) {
+            const timeElapsed = (currentTime - parseInt(savedTimestamp)) / 1000;
+            const remaining = 10 - timeElapsed;
+
+            if (remaining <= 0) {
+                // 시간이 초과된 경우
+                removeFromLocalStorage(`insurance_${insuranceId}`);
+                if (!alertShown) {
+                    setAlertShown(true); // 중복 알림 방지
+                    alert("임시 저장된 데이터가 10초가 지나 삭제되었습니다.");
+                }
+            } else {
+                setContractData(savedData);
+                setRemainingTime(Math.ceil(remaining));
+                startTimer(Math.ceil(remaining));
+            }
+        }
+    }, [insuranceId, alertShown]);
+
+    const startTimer = (seconds: number) => {
+        if (timer) clearInterval(timer); // 기존 타이머 제거
+        const newTimer = setInterval(() => {
+            setRemainingTime((prev) => {
+                if (prev === null || prev <= 1) {
+                    clearInterval(newTimer);
+                    removeFromLocalStorage(`insurance_${insuranceId}`);
+                    if (!alertShown) { // 알림이 한 번만 실행되도록 확인
+                        setAlertShown(true); // 중복 방지
+                        alert("임시 저장된 데이터가 10초가 지나 삭제되었습니다.");
+                    }
+                    return null;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+        setTimer(newTimer);
+    };
+
+
+    // 입력 핸들러
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         const [parent, key] = name.split(".");
@@ -82,36 +129,71 @@ const CreateContract: React.FC = () => {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
+    // 임시 저장
+    const handleSaveTemporary = () => {
         if (!insuranceId) {
-            setError("유효하지 않은 보험 ID입니다.");
+            alert("유효하지 않은 보험 ID입니다.");
             return;
         }
 
         try {
-            setError(null);
-            setSuccess(null);
+            const startTime = performance.now(); // 요청 시작 시간
 
-            console.log("=== API 요청 시작 ===");
+            const sanitizedData = {
+                contractRequestDto: contractData.contractRequestDto || {},
+                driverLicenseRequestDto: contractData.driverLicenseRequestDto || {},
+                carRequestDto: contractData.carRequestDto || {},
+            };
+
+            saveToLocalStorage(`insurance_${insuranceId}`, sanitizedData);
+            localStorage.setItem(`insurance_${insuranceId}_timestamp`, Date.now().toString());
+
+            const endTime = performance.now(); // 요청 종료 시간
+            const durationInSeconds = ((endTime - startTime) / 1000).toFixed(2); // 소요 시간 계산
+
+            console.log(`임시 저장이 완료되었습니다. (${durationInSeconds}초 소요)`);
+
+            alert(`임시 저장이 성공적으로 완료되었습니다! (${durationInSeconds}초 소요)`);
+
+            setAlertShown(false); // 알림 상태 초기화
+            setRemainingTime(10); // 10초 설정
+            startTimer(10); // 타이머 시작
+        } catch (error) {
+            console.error("임시 저장 실패:", error);
+            alert("임시 저장에 실패했습니다.");
+        }
+    };
+
+
+    // 최종 저장: 서버로 데이터 전송
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!insuranceId) {
+            alert("유효하지 않은 보험 ID입니다.");
+            return;
+        }
+
+        try {
+            console.log("=== 계약 생성 요청 시작 ===");
             console.log("Insurance ID:", insuranceId);
             console.log("Request Data:", JSON.stringify(contractData, null, 2));
 
             const response = await createContract(insuranceId, contractData);
-            console.log("=== API 요청 성공 ===");
+
+            console.log("=== 계약 생성 성공 ===");
             console.log("Response:", response);
 
-            setSuccess(`계약이 성공적으로 생성되었습니다! 고객 ID: ${response.customerId}`);
+            alert(`계약이 성공적으로 생성되었습니다!`);
             navigate("/");
         } catch (error: unknown) {
-            console.error("=== API 요청 실패 ===");
+            console.error("=== 계약 생성 실패 ===");
             if (error instanceof Error) {
                 console.error("Error Message:", error.message);
-                setError(error.message);
+                alert(`계약 생성 실패: ${error.message}`);
             } else {
                 console.error("Unexpected Error:", error);
-                setError("알 수 없는 오류가 발생했습니다.");
+                alert("계약 생성 실패: 알 수 없는 오류가 발생했습니다.");
             }
         }
     };
@@ -120,8 +202,7 @@ const CreateContract: React.FC = () => {
         <Container>
             <Header />
             <Title>계약 생성</Title>
-            {error && <ErrorText>{error}</ErrorText>}
-            {success && <SuccessMessage>{success}</SuccessMessage>}
+
             <Form onSubmit={handleSubmit}>
                 <Label>결제일</Label>
                 <Input
@@ -223,8 +304,6 @@ const CreateContract: React.FC = () => {
                     <option value="SUV">SUV</option>
                     <option value="트럭">트럭</option>
                     <option value="밴">밴</option>
-                    <option value="오토바이">오토바이</option>
-                    <option value="특수차량">특수차량</option>
                 </select>
                 <Label>차량 등록 날짜</Label>
                 <Input
@@ -244,17 +323,53 @@ const CreateContract: React.FC = () => {
                     <option value="리스">리스</option>
                     <option value="렌탈">렌탈</option>
                 </select>
-                <Label>무사고 기간 (개월)</Label>
+                <Label>무사고 기간</Label>
                 <Input
                     type="number"
                     name="carRequestDto.accidentFreePeriod"
                     value={contractData.carRequestDto.accidentFreePeriod}
                     onChange={handleChange}
                 />
+                {remainingTime !== null && (
+                    <div>
+                        <strong>남은 시간: {remainingTime}초</strong>
+                    </div>
+                )}
                 <Button type="submit">계약 생성</Button>
+                <Button type="button" onClick={handleSaveTemporary}>
+                    임시 저장
+                </Button>
             </Form>
         </Container>
     );
 };
 
 export default CreateContract;
+
+// 유틸 함수
+const saveToLocalStorage = (key: string, data: any) => {
+    try {
+        localStorage.setItem(key, JSON.stringify(data));
+    } catch (error) {
+        console.error("Failed to save data to localStorage:", error);
+    }
+};
+
+const loadFromLocalStorage = (key: string): any | null => {
+    try {
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : null;
+    } catch (error) {
+        console.error("Failed to load data from localStorage:", error);
+        return null;
+    }
+};
+
+const removeFromLocalStorage = (key: string) => {
+    try {
+        localStorage.removeItem(key);
+        localStorage.removeItem(`${key}_timestamp`);
+    } catch (error) {
+        console.error("Failed to remove data from localStorage:", error);
+    }
+};

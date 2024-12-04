@@ -5,8 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7edc1980-f65e-47fe-9e95-e60c78af3c9f" name="변경" comment="&quot;feat: Implement signup, home, and login pages&quot;">
+      <change afterPath="$PROJECT_DIR$/src/assets/AdminImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AdminHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/AdminContractDetails.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/styles/AdminHeaderStyles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vercel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/createContractApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/createContractApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/AdminHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/AdminHome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/AdminContracts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/AdminContracts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetailsClientPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractDetailsClientPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractReviewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ContractReviewPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateContract.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/CreateProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/Planning.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/Planning.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/SuvMenus/ViewAll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/SuvMenus/ViewAll.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/Teams/CompensationTeam.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Teams/CompensationTeam.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/Teams/CompensationTeam_Accident.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Teams/CompensationTeam_Accident.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/Teams/CompensationTeam_Claim.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Teams/CompensationTeam_Claim.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page/Teams/PlanningTeam.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page/Teams/PlanningTeam.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/Router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/styles/AccountInfoStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/AccountInfoStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/styles/PaymentStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/PaymentStyles.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>

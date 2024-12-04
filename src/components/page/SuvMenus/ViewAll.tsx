@@ -124,7 +124,16 @@ const ViewAll: React.FC = () => {
                             <p>설명: {plan.description}</p>
                             <p>검토 상태: {plan.reviewStatus}</p>
                             <p>
-                                파일: <a href={plan.fileUrl}>다운로드</a>
+                                파일:
+                                {plan.fileUrl && (
+                                    <div>
+                                        {plan.fileUrl.endsWith('.jpg') || plan.fileUrl.endsWith('.png') || plan.fileUrl.endsWith('.gif') || plan.fileUrl.endsWith('.jpeg') ? (
+                                            <img src={plan.fileUrl} alt="Uploaded" style={{ maxWidth: '500px', maxHeight: '500px', marginTop: '10px' }} />
+                                        ) : (
+                                            <p>업로드된 파일: {plan.fileUrl.split('/').pop()}</p>
+                                        )}
+                                    </div>
+                                )}
                             </p>
                             <>
                                 <Select

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 가져오기
-import Header from '../../Header';
+import Header from '../../AdminHeader';
 import {
     Container,
     Title,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createProduct } from '../../../api/createProductApi';
-import Header from '../../Header';
+import Header from '../../AdminHeader';
 import {
     Container,
     Title,

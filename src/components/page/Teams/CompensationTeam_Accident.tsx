@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllAccidents, Accident } from "../../../api/getAllAccidentsApi";
 import { updateLiabilityStatus } from "../../../api/updateLiabilityApi";
 import { payClaim } from "../../../api/payClaimApi";
-import Header from "../../Header";
+import Header from "../../AdminHeader";
 import {
     Container,
     Title,
