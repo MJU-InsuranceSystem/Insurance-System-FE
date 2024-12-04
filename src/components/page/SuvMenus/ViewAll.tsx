@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getInsurancePlans, InsurancePlan } from '../../../api/viewAllApi';
-import Header from '../../Header';
+import Header from '../../AdminHeader';
 import { approvePlan } from '../../../api/approveApi';
 import {
     Container,
