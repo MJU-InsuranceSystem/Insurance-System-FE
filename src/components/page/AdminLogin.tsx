@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Header from '../Header';
+import AdminHeader from '../AdminHeader'; // Assuming you have a separate AdminHeader component
 import {
     Card,
     Title,
@@ -9,17 +9,18 @@ import {
     Wrapper,
     RegisterButton,
     ErrorMessage
-} from '../styles/LoginStyles';
+} from '../styles/LoginStyles'; // You can keep the same styles for now
+
 import { loginUser } from '../../api/loginApi';
 
-const Login: React.FC = () => {
+const AdminLogin: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState<string | null>(null);
     const [loginError, setLoginError] = useState<string | null>(null);
     const navigate = useNavigate();
 
-    // 이메일 유효성 검사
+    // Email validation
     const validateEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         setEmailError(email.trim() === '' ? null : !emailRegex.test(email) ? '유효한 이메일 주소를 입력해주세요.' : null);
@@ -46,15 +47,15 @@ const Login: React.FC = () => {
                 setLoginError(null);
                 const accessToken = response.data?.accessToken;
 
-                // 로그인 성공 시 이메일을 로컬스토리지에 저장
+                // Save accessToken in localStorage
                 if (accessToken) {
                     localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('userEmail', email); // 이메일 저장
+                    localStorage.setItem('userEmail', email); // Store email
                 }
 
                 const userType = localStorage.getItem('userType');
-                if (userType === 'CUSTOMER') {
-                    navigate('/');
+                if (userType === 'WORKER') {
+                    navigate('/adminHome'); // Redirect to admin home if worker
                 }
             } else {
                 setLoginError('이메일 또는 비밀번호가 올바르지 않습니다.');
@@ -65,20 +66,19 @@ const Login: React.FC = () => {
         }
     };
 
-
     const isFormValid = () => {
         return email.trim() !== '' && password.trim() !== '' && emailError === null;
     };
 
     return (
         <>
-            <Header />
+            <AdminHeader /> {/* Use AdminHeader here */}
             <Wrapper>
                 <Card>
                     <Title>
                         <span style={{ color: 'black' }}>아래 </span>
-                        <span style={{ color: '#1058A3' }}>로그인 </span>
-                        <span style={{ color: 'black' }}>하기 위한 정보를 입력해주세요</span>
+                        <span style={{ color: '#1058A3' }}>관리자 로그인</span>
+                        <span style={{ color: 'black' }}> 하기 위한 정보를 입력해주세요</span>
                     </Title>
                     <form onSubmit={handleLogin}>
                         <Input
@@ -118,4 +118,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default AdminLogin;

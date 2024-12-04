@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../page/Home";
 import Login from "../page/Login";
+import AdminLogin from "../page/AdminLogin"; // Import AdminLogin
 import Register from "../page/Register";
 import AdminHome from "../page/AdminHome";
 import Planning from "../page/SuvMenus/Planning";
@@ -43,6 +44,7 @@ const Router: React.FC = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/admin-login" element={<AdminLogin />} /> {/* Added AdminLogin route */}
                 <Route path="/register" element={<Register />} />
                 <Route path="/adminHome" element={<AdminHome />} />
                 <Route path="/planningTeam" element={<PlanningTeam />} />

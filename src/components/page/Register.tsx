@@ -34,6 +34,7 @@ const Register: React.FC = () => {
     const [role, setRole] = useState<string>('');
     const navigate = useNavigate();
 
+    // Validation Functions
     const validateEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         setEmailError(emailRegex.test(email) ? null : '유효한 이메일 주소를 입력해주세요.');
@@ -64,6 +65,7 @@ const Register: React.FC = () => {
         return true;
     };
 
+    // Form Validation
     const isFormValid = () => {
         if (!name.trim() || !/^[a-zA-Z가-힣]+$/.test(name)) {
             alert('이름은 반드시 문자열로 입력해야 합니다.');
@@ -99,6 +101,8 @@ const Register: React.FC = () => {
         }
         return true;
     };
+
+    // Handle Sign Up
     const handleSignUp = async (event: React.FormEvent) => {
         event.preventDefault();
         if (!isFormValid()) return;
@@ -122,24 +126,28 @@ const Register: React.FC = () => {
 
         try {
             await registerUser(userData);
-
-            // WORKER 또는 CUSTOMER 정보를 로컬스토리지에 저장
-            localStorage.setItem('userType', userType);
-
+            localStorage.setItem('userType', userType); // Store userType in localStorage
             alert('회원가입이 완료되었습니다!');
-            navigate('/');
+
+            // Redirect based on userType
+            if (userType === 'CUSTOMER') {
+                navigate('/login');
+            } else {
+                navigate('/admin-login'); // For WORKER, navigate to admin-login
+            }
         } catch (error) {
             console.error(error);
             alert('회원가입에 실패했습니다. 다시 시도해 주세요.');
         }
     };
 
-
     return (
         <>
             <Header />
             <SignUpWrapper>
                 <form onSubmit={handleSignUp}>
+                    {/* Form Fields for Name, Phone, Email, etc. */}
+
                     <Input
                         type="text"
                         placeholder="이름을 입력해주세요."
