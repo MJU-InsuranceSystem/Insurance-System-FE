@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { createContract } from "../../../api/createContractApi"; // 기존 서버 API 사용
+import { createContract } from "../../../api/createContractApi";
 import Header from "../../Header";
 import {
     Container,
@@ -67,9 +67,9 @@ const CreateContract: React.FC = () => {
 
     const [remainingTime, setRemainingTime] = useState<number | null>(null);
     const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
-    const [alertShown, setAlertShown] = useState<boolean>(false); // 중복 알림 방지
+    const [alertShown, setAlertShown] = useState<boolean>(false);
 
-    // 로컬 스토리지에서 데이터 불러오기
+    // 임시 저장 및 타이머 동작
     useEffect(() => {
         if (!insuranceId) return;
 
@@ -82,10 +82,11 @@ const CreateContract: React.FC = () => {
             const remaining = 10 - timeElapsed;
 
             if (remaining <= 0) {
-                // 시간이 초과된 경우
                 removeFromLocalStorage(`insurance_${insuranceId}`);
+                resetFields();
                 if (!alertShown) {
-                    setAlertShown(true); // 중복 알림 방지
+                    alert("입력 시간이 초과되었습니다. 데이터를 초기화합니다.");
+                    setAlertShown(true);
                 }
             } else {
                 setContractData(savedData);
@@ -95,16 +96,28 @@ const CreateContract: React.FC = () => {
         }
     }, [insuranceId, alertShown]);
 
+    // 타이머가 0초가 될 때만 필드 값 초기화
+    useEffect(() => {
+        if (remainingTime !== null && remainingTime <= 0) {
+            if (!alertShown) {
+                alert("입력 시간이 초과되었습니다. 데이터를 초기화합니다.");
+                setAlertShown(true);
+            }
+            removeFromLocalStorage(`insurance_${insuranceId}`);
+            resetFields();
+        }
+    }, [remainingTime, alertShown, insuranceId]);
+
     const startTimer = (seconds: number) => {
-        if (timer) clearInterval(timer); // 기존 타이머 제거
+        if (timer) clearInterval(timer);
         const newTimer = setInterval(() => {
             setRemainingTime((prev) => {
                 if (prev === null || prev <= 1) {
                     clearInterval(newTimer);
-                    removeFromLocalStorage(`insurance_${insuranceId}`);
-                    if (!alertShown) { // 알림이 한 번만 실행되도록 확인
-                        setAlertShown(true); // 중복 방지
+                    if (insuranceId) {
+                        removeFromLocalStorage(`insurance_${insuranceId}`);
                     }
+                    resetFields();
                     return null;
                 }
                 return prev - 1;
@@ -113,8 +126,34 @@ const CreateContract: React.FC = () => {
         setTimer(newTimer);
     };
 
+    const resetFields = () => {
+        setContractData({
+            contractRequestDto: {
+                paymentDate: "",
+                paymentMethod: "",
+                paymentAccount: "",
+                bank: "",
+                startDate: "",
+                endDate: "",
+            },
+            driverLicenseRequestDto: {
+                licenseNumber: "",
+                licenseType: "",
+                issueDate: "",
+                validityPeriod: "",
+            },
+            carRequestDto: {
+                carNumber: "",
+                carType: "",
+                modelYear: "",
+                registrationDate: "",
+                ownershipStatus: "",
+                accidentFreePeriod: "",
+            },
+        });
+    };
 
-    // 입력 핸들러
+    // 필드 값 변경 처리
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         const [parent, key] = name.split(".");
@@ -125,9 +164,14 @@ const CreateContract: React.FC = () => {
                 [key]: value,
             },
         }));
+
+        // 필드 변경 시 타이머 초기화
+        if (remainingTime !== null && remainingTime > 0) {
+            setRemainingTime(10); // 타이머 10초로 초기화
+            startTimer(10); // 타이머 재시작
+        }
     };
 
-    // 임시 저장
     const handleSaveTemporary = () => {
         if (!insuranceId) {
             alert("유효하지 않은 보험 ID입니다.");
@@ -135,33 +179,17 @@ const CreateContract: React.FC = () => {
         }
 
         try {
-            const startTime = performance.now(); // 요청 시작 시간
-
-            const sanitizedData = {
-                contractRequestDto: contractData.contractRequestDto || {},
-                driverLicenseRequestDto: contractData.driverLicenseRequestDto || {},
-                carRequestDto: contractData.carRequestDto || {},
-            };
-
-            saveToLocalStorage(`insurance_${insuranceId}`, sanitizedData);
+            saveToLocalStorage(`insurance_${insuranceId}`, contractData);
             localStorage.setItem(`insurance_${insuranceId}_timestamp`, Date.now().toString());
-
-            const endTime = performance.now(); // 요청 종료 시간
-            const durationInSeconds = ((endTime - startTime) / 1000).toFixed(2); // 소요 시간 계산
-
-            console.log(`임시 저장이 완료되었습니다. (${durationInSeconds}초 소요)`);
-
-            setAlertShown(false); // 알림 상태 초기화
-            setRemainingTime(10); // 10초 설정
-            startTimer(10); // 타이머 시작
+            setAlertShown(false);
+            setRemainingTime(10);
+            startTimer(10);
         } catch (error) {
             console.error("임시 저장 실패:", error);
             alert("임시 저장에 실패했습니다.");
         }
     };
 
-
-    // 최종 저장: 서버로 데이터 전송
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -175,13 +203,14 @@ const CreateContract: React.FC = () => {
             console.log("Insurance ID:", insuranceId);
             console.log("Request Data:", JSON.stringify(contractData, null, 2));
 
+            // Create contract by calling the API
             const response = await createContract(insuranceId, contractData);
 
             console.log("=== 계약 생성 성공 ===");
             console.log("Response:", response);
 
-            alert(`계약이 성공적으로 생성되었습니다!`);
-            navigate("/");
+            alert("계약이 성공적으로 생성되었습니다!");
+            navigate("/");  // Redirect to home or another page
         } catch (error: unknown) {
             console.error("=== 계약 생성 실패 ===");
             if (error instanceof Error) {
@@ -194,16 +223,16 @@ const CreateContract: React.FC = () => {
         }
     };
 
+
     return (
         <Container>
             <Header />
             <Title>계약 생성</Title>
-
             <Form onSubmit={handleSubmit}>
-                 {remainingTime !== null && (
-                <div>
-                    <strong>남은 시간: {remainingTime}초</strong>
-                </div>
+                {remainingTime !== null && (
+                    <div>
+                        <strong>남은 시간: {remainingTime}초</strong>
+                    </div>
                 )}
                 <Label>결제일</Label>
                 <Input
@@ -211,7 +240,6 @@ const CreateContract: React.FC = () => {
                     name="contractRequestDto.paymentDate"
                     value={contractData.contractRequestDto.paymentDate}
                     onChange={handleChange}
-                    placeholder="결제일을 입력하세요 (숫자)"
                 />
                 <Label>결제 방식</Label>
                 <select
@@ -229,7 +257,6 @@ const CreateContract: React.FC = () => {
                     name="contractRequestDto.paymentAccount"
                     value={contractData.contractRequestDto.paymentAccount}
                     onChange={handleChange}
-                    placeholder="계좌 번호를 입력하세요"
                 />
                 <Label>은행</Label>
                 <select
