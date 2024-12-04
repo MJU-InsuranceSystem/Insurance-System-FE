@@ -86,7 +86,6 @@ const CreateContract: React.FC = () => {
                 removeFromLocalStorage(`insurance_${insuranceId}`);
                 if (!alertShown) {
                     setAlertShown(true); // 중복 알림 방지
-                    alert("임시 저장된 데이터가 10초가 지나 삭제되었습니다.");
                 }
             } else {
                 setContractData(savedData);
@@ -105,7 +104,6 @@ const CreateContract: React.FC = () => {
                     removeFromLocalStorage(`insurance_${insuranceId}`);
                     if (!alertShown) { // 알림이 한 번만 실행되도록 확인
                         setAlertShown(true); // 중복 방지
-                        alert("임시 저장된 데이터가 10초가 지나 삭제되었습니다.");
                     }
                     return null;
                 }
@@ -152,8 +150,6 @@ const CreateContract: React.FC = () => {
             const durationInSeconds = ((endTime - startTime) / 1000).toFixed(2); // 소요 시간 계산
 
             console.log(`임시 저장이 완료되었습니다. (${durationInSeconds}초 소요)`);
-
-            alert(`임시 저장이 성공적으로 완료되었습니다! (${durationInSeconds}초 소요)`);
 
             setAlertShown(false); // 알림 상태 초기화
             setRemainingTime(10); // 10초 설정
@@ -204,6 +200,11 @@ const CreateContract: React.FC = () => {
             <Title>계약 생성</Title>
 
             <Form onSubmit={handleSubmit}>
+                 {remainingTime !== null && (
+                <div>
+                    <strong>남은 시간: {remainingTime}초</strong>
+                </div>
+                )}
                 <Label>결제일</Label>
                 <Input
                     type="text"
@@ -330,11 +331,6 @@ const CreateContract: React.FC = () => {
                     value={contractData.carRequestDto.accidentFreePeriod}
                     onChange={handleChange}
                 />
-                {remainingTime !== null && (
-                    <div>
-                        <strong>남은 시간: {remainingTime}초</strong>
-                    </div>
-                )}
                 <Button type="submit">계약 생성</Button>
                 <Button type="button" onClick={handleSaveTemporary}>
                     임시 저장
