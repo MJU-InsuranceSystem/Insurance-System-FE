@@ -1,28 +1,25 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #f9f9f9;
-`;
-
-export const Title = styled.h1`
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
+    background-color: #ffffff;
     text-align: center;
+    padding: 40px 20px;
 `;
 
+// 타이틀 스타일
+export const Title = styled.h1`
+    color: #000000; /* 검정색 텍스트 */
+    font-size: 26px;
+    margin: 0;
+    white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
+`;
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
+    align-items: center; /* 자식 요소들을 수평으로 가운데 정렬 */
     width: 100%;
     max-width: 400px;
+    margin: 0 auto; /* 가운데 정렬을 위한 자동 마진 */
 `;
 
 export const Label = styled.label`
