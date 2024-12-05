@@ -177,18 +177,26 @@ const CreateContract: React.FC = () => {
             alert("유효하지 않은 보험 ID입니다.");
             return;
         }
-
+    
         try {
+            const startTime = Date.now(); // 저장 시작 시간 기록
             saveToLocalStorage(`insurance_${insuranceId}`, contractData);
             localStorage.setItem(`insurance_${insuranceId}_timestamp`, Date.now().toString());
+            const endTime = Date.now(); // 저장 종료 시간 기록
+            const durationInSeconds = ((endTime - startTime) / 1000).toFixed(2);
+    
             setAlertShown(false);
             setRemainingTime(10);
             startTimer(10);
+    
+            // 저장 성공 메시지 출력
+            alert(`임시 저장이 성공적으로 완료되었습니다! (${durationInSeconds}초 소요)`);
         } catch (error) {
             console.error("임시 저장 실패:", error);
             alert("임시 저장에 실패했습니다.");
         }
     };
+    
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
