@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../page/Home";
 import Login from "../page/Login";
-import AdminLogin from "../page/AdminLogin"; // Import AdminLogin
+import AdminLogin from "../page/AdminLogin";
 import Register from "../page/Register";
 import AdminHome from "../page/AdminHome";
 import Planning from "../page/SuvMenus/Planning";
@@ -24,19 +24,19 @@ import InsuranceDetail from "../page/SuvMenus/InsuranceDetail";
 import CreateContract from "../page/SuvMenus/CreateContract";
 import MyPage from "../page/MyPage";
 import ContractDetailsPage from "../page/SuvMenus/ContractDetails";
-import ContractDetailsClientPage from "../page/SuvMenus/ContractDetailsClientPage"; // 추가된 임포트
+import ContractDetailsClientPage from "../page/SuvMenus/ContractDetailsClientPage"; 
 import AdminContracts from "../page/SuvMenus/AdminContracts";
 import ContractReviewPage from "../page/SuvMenus/ContractReviewPage";
 import PaymentPage from "../page/SuvMenus/PaymentPage";
-import AccountInfoPage from "../page/SuvMenus/AccountInfoPage"; // 계좌정보 입력하기 페이지 추가
-import PaymentSubmissionPage from "../page/SuvMenus/PaymentSubmissionPage"; // 납부하기 페이지 추가
-import PaymentHistoryPage from "../page/SuvMenus/PaymentHistoryPage"; // 납부 내역 조회 페이지 추가
-import AccidentReportPage from "../page/SuvMenus/AccidentReportPage"; // 사고 접수하기 페이지 추가
-import AccidentListPage from "../page/SuvMenus/AccidentListPage"; // 사고 내역 조회 페이지 추가
-import AccidentDetailsPage from "../page/SuvMenus/AccidentDetailsPage"; // 사고 상세 정보 페이지 추가
-import CompensationTeam_Accident from "../page/Teams/CompensationTeam_Accident"; // 보험 지원팀 사고 관리 경로 추가
+import AccountInfoPage from "../page/SuvMenus/AccountInfoPage"; 
+import PaymentSubmissionPage from "../page/SuvMenus/PaymentSubmissionPage"; 
+import PaymentHistoryPage from "../page/SuvMenus/PaymentHistoryPage"; 
+import AccidentReportPage from "../page/SuvMenus/AccidentReportPage"; 
+import AccidentListPage from "../page/SuvMenus/AccidentListPage"; 
+import AccidentDetailsPage from "../page/SuvMenus/AccidentDetailsPage"; 
+import CompensationTeam_Accident from "../page/Teams/CompensationTeam_Accident"; 
 import CompensationTeam_Claim from "../page/Teams/CompensationTeam_Claim";
-import AdminContractDetails from "../page/SuvMenus/AdminContractDetails"; //이건 만약 보험 지원팀 페이지 안나누면 필요 없을 듯
+import AdminContractDetails from "../page/SuvMenus/AdminContractDetails"; 
 
 const Router: React.FC = () => {
     return (
@@ -44,7 +44,7 @@ const Router: React.FC = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/admin-login" element={<AdminLogin />} /> {/* Added AdminLogin route */}
+                <Route path="/admin-login" element={<AdminLogin />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/adminHome" element={<AdminHome />} />
                 <Route path="/planningTeam" element={<PlanningTeam />} />
@@ -66,18 +66,18 @@ const Router: React.FC = () => {
                 <Route path="/createContract/:insuranceId" element={<CreateContract />} />
                 <Route path="/myPage/:subscriberId" element={<MyPage />} />
                 <Route path="/contracts/details/:contractId" element={<ContractDetailsPage />} />
-                <Route path="/contracts/details/client/:contractId" element={<ContractDetailsClientPage />} /> {/* 수정된 라우트 */}
+                <Route path="/contracts/details/client/:contractId" element={<ContractDetailsClientPage />} />
                 <Route path="/admin/contracts" element={<AdminContracts />} />
                 <Route path="/contract-review/:contractId" element={<ContractReviewPage />} />
                 <Route path="/payments/contracts/:contractId" element={<PaymentPage />} />
-                <Route path="/accounts/:contractId" element={<AccountInfoPage />} /> {/* 계좌정보 입력하기 */}
-                <Route path="/payment-submission/:contractId" element={<PaymentSubmissionPage />} /> {/* 납부하기 */}
-                <Route path="/payment-history/:contractId" element={<PaymentHistoryPage />} /> {/* 납부 내역 조회 */}
+                <Route path="/accounts/:contractId" element={<AccountInfoPage />} />
+                <Route path="/payment-submission/:contractId" element={<PaymentSubmissionPage />} />
+                <Route path="/payment-history/:contractId" element={<PaymentHistoryPage />} />
                 <Route path="/accidents/report/:contractId" element={<AccidentReportPage />} /> {/* 사고 접수하기 */}
-                <Route path="/accident-list" element={<AccidentListPage />} /> {/* 사고 내역 조회 */}
-                <Route path="/accidents/details/:accidentId" element={<AccidentDetailsPage />} /> {/* 사고 상세 조회 */}
+                <Route path="/accident-list" element={<AccidentListPage />} />
+                <Route path="/accidents/details/:accidentId" element={<AccidentDetailsPage />} />
                 <Route path="/compensation-team" element={<CompensationTeam />} />
-                <Route path="/compensation-team/accidents" element={<CompensationTeam_Accident />} /> {/* 사건 전체 리스트 경로 추가 */}
+                <Route path="/compensation-team/accidents" element={<CompensationTeam_Accident />} />
                 <Route path="/claims" element={<CompensationTeam_Claim />} />
                 <Route path="/adminContractDetails" element={<AdminContractDetails />} />
             </Routes>

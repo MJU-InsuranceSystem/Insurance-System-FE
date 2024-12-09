@@ -64,6 +64,14 @@ const ContractDetailsClientPage: React.FC = () => {
         navigate(`/payment-submission/${contractId}`); // 납부 하기 페이지로 이동
     };
 
+    const handleReportAccident = () => {
+        if (!contractId) {
+            setError("유효하지 않은 계약 ID입니다.");
+            return;
+        }
+        navigate(`/accidents/report/${contractId}`); // 사고 접수 페이지로 이동
+    };
+
     if (loading) {
         return (
             <Container>
@@ -114,6 +122,7 @@ const ContractDetailsClientPage: React.FC = () => {
             )}
             <Button onClick={handlePaymentSubmit}>보험료 납부 하기</Button> {/* 납부 하기 페이지로 이동 */}
             <Button onClick={handlePaymentHistoryClick}>납부 확인 조회하기</Button> {/* 납부 내역 조회 페이지로 이동 */}
+            <Button onClick={handleReportAccident}>사건 접수하기</Button> {/* 사건 접수 페이지로 이동 */}
         </Container>
     );
 };
