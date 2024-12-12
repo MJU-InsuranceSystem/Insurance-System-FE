@@ -15,7 +15,7 @@ import {
     Button,
 } from "../../styles/CompensationTeamAccidentStyles";
 
-const CompensationTeam_Accident: React.FC = () => {
+const CompensationTeamAccident: React.FC = () => {
     const [accidents, setAccidents] = useState<Accident[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -128,4 +128,4 @@ const CompensationTeam_Accident: React.FC = () => {
     );
 };
 
-export default CompensationTeam_Accident;
+export default CompensationTeamAccident;

@@ -34,8 +34,8 @@ import PaymentHistoryPage from "../page/SuvMenus/PaymentHistoryPage";
 import AccidentReportPage from "../page/SuvMenus/AccidentReportPage"; 
 import AccidentListPage from "../page/SuvMenus/AccidentListPage"; 
 import AccidentDetailsPage from "../page/SuvMenus/AccidentDetailsPage"; 
-import CompensationTeam_Accident from "../page/Teams/CompensationTeam_Accident"; 
-import CompensationTeam_Claim from "../page/Teams/CompensationTeam_Claim";
+import CompensationTeamAccident from "../page/Teams/CompensationTeamAccident"; 
+import CompensationTeamClaim from "../page/Teams/CompensationTeamClaim";
 import AdminContractDetails from "../page/SuvMenus/AdminContractDetails"; 
 
 const Router: React.FC = () => {
@@ -77,8 +77,8 @@ const Router: React.FC = () => {
                 <Route path="/accident-list" element={<AccidentListPage />} />
                 <Route path="/accidents/details/:accidentId" element={<AccidentDetailsPage />} />
                 <Route path="/compensation-team" element={<CompensationTeam />} />
-                <Route path="/compensation-team/accidents" element={<CompensationTeam_Accident />} />
-                <Route path="/claims" element={<CompensationTeam_Claim />} />
+                <Route path="/compensation-team/accidents" element={<CompensationTeamAccident />} />
+                <Route path="/claims" element={<CompensationTeamClaim />} />
                 <Route path="/adminContractDetails" element={<AdminContractDetails />} />
             </Routes>
         </BrowserRouter>
