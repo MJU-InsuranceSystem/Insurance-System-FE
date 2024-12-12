@@ -8,8 +8,13 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "jsx": "react-jsx",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "types": ["cypress"] // Cypress 타입 정의 추가
   },
-  "include": ["src/**/*", "vite-env.d.ts"], // 컴파일할 파일 포함
+  "include": [
+    "src/**/*",
+    "vite-env.d.ts",
+    "cypress/**/*.ts" // Cypress 테스트 파일 포함
+  ],
   "exclude": ["node_modules"] // 컴파일에서 제외할 파일
 }
