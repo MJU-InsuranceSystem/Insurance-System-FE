@@ -33,28 +33,30 @@ const Login: React.FC = () => {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-
+    
         if (!isFormValid()) {
             console.log('폼 유효하지 않음');
             return;
         }
-
+    
         try {
             const response = await loginUser(email, password);
-
+    
             if (response.httpStatusCode === 200 && response.responseCode === 'SUCCESS') {
                 setLoginError(null);
                 const accessToken = response.data?.accessToken;
-
+    
                 // 로그인 성공 시 이메일을 로컬스토리지에 저장
                 if (accessToken) {
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('userEmail', email); // 이메일 저장
                 }
-
+    
                 const userType = localStorage.getItem('userType');
                 if (userType === 'CUSTOMER') {
                     navigate('/');
+                } else if (userType === 'WORKER') {
+                    navigate('/adminHome'); // WORKER인 경우 adminHome으로 이동
                 }
             } else {
                 setLoginError('이메일 또는 비밀번호가 올바르지 않습니다.');
